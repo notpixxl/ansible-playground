@@ -1,0 +1,2 @@
+[db-vms]
+svlxbddvm[05] disk='20' datastore='POOL-SSD1' network='IDEA-LAN1' memory='8' cpucount='2' osid='debian9_64Guest'
