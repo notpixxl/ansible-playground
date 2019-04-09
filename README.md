@@ -1,1 +1,1 @@
-# Ansible playbooks for IDEA VMs Provisionning
+# Ansible Provisionning IDEA
