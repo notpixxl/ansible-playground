@@ -1,0 +1,53 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  vars:
+    users:
+    - "cpiveteau"
+  tasks:
+
+    - name: Upgrade packages
+      apt: upgrade=safe
+
+    - name: Make sure we have a "sudo" group	
+      group: 
+        name=sudo 
+        state=present
+
+    - name: Copy sudoers file for safety
+      command: cp -f /etc/sudoers /etc/sudoers.tmp
+
+    - name: Create sudoers file backup
+      command: cp -f /etc/sudoers /etc/sudoers.bak
+
+    - name: Create users accounts
+      user:
+        name: "{{item}}"
+        state: present
+        createhome: yes
+        become: yes
+        become_method: "sudo"
+        shell: /bin/bash
+        # this is just a default password,it's SHA512 for "changeme"
+        password: $6$lTAu5CUHVq$LPv0QEZukItGS9rNYVDj8IKlfcP2UoiYMymTBWyOTjJsrhXnSXnyyRouxB/9U703W0U3y2fdExNY4XBZnnwp8.
+        update_password: on_create
+      with_items: "{{users}}"
+
+    - name: Add .ssh directories
+      file:
+          path: /home/{{ item.name }}/.ssh
+          state: directory
+          mode: 0700
+          owner: "{{item}}"
+          group: "{{item}}"
+      with_items: users
+
+    - name: Add authorized keys
+      authorized_key:
+        user: "{{ item }}"
+        key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
+      with_items: "{{ users }}"
+
+    - name: Final sudoers file check
+      shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
