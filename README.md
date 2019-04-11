@@ -1,30 +1,34 @@
-# Ansible Provisionning IDEA
+# Ansible playground
 
-# Testing Purpose !!!Do not use it in production Env!!!
+## Requirements
+* Have Vagrant/Virtual box installed on your host machine
+* Have ansible installed on your host machine
+* You should add your public ssh key to the authorized_key file before doing anything.
 
-File /etc/ansible/hosts is modified to add test host at EOF
+## Ping vagrant with ansible
+* default is referencing the target hosts. Defined in the inventory file.
+* -i point to the inventory file
+* --private-key points to vagrant specific private key
+* -u specify user for ssh
+* -m module to execute
+* ping module is not a classic ping. It performs a ping via ssh
 
-```
-[test_db_servers]
-svlxbddvm05.idea.lo ansible_user=administrateur ansible_ssh_pass=userpass
-```
-To test that your host is ok with Ansible
-
-```
-ansible -m ping all
-```
-
-Should respond
-
-```
-svlxbddvm05.idea.lo | SUCCESS => {
-    "changed": false, 
-    "ping": "pong"
-}
+```bash
+ansible default -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping-vvv
 ```
 
-# useradd_ideaadmins_with_ssh
+## Run a playbook
+A playbook is a set of 'plays' each play is related to a hosts group and contains a tasks list to run. It is possible to run some hooks called handlers at the end of a tasks.
 
+```bash
+ansible-playbook ./playbooks.yml -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
-ansible-playbook useradd_ideaadmins_with_ssh.yml --ask-become-pass
+
+## Test Vagrant SSH connection with another user
+
+```bash
+ssh -p 2222 username@localhost
 ```
+
+
+

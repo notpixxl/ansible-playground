@@ -1,0 +1,5 @@
+---
+# defaults file for fail2ban
+fail2ban_default_jail_findtime: 600
+fail2ban_default_jail_maxretry: 5
+fail2ban_default_jail_bantime: 600

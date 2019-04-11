@@ -1,0 +1,25 @@
+---
+# tasks file for fail2ban
+- name: Install fail2ban
+  apt:
+    name: fail2ban
+    state: present
+    update_cache: true
+
+- name: Backup default configuration file
+  copy:
+    src: /etc/fail2ban/jail.conf
+    dest: /etc/fail2ban/jail.conf.default
+    remote_src: yes
+
+- name: Configure fail2ban jail
+  ini_file:
+    path: /etc/fail2ban/jail.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    backup: yes
+  with_items: "{{ fail2ban_jail_configuration }}"
+  notify:
+    - restart fail2ban
+

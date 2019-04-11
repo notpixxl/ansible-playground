@@ -2,6 +2,7 @@
 - hosts: all
   become: true
   become_user: root
+  gather_facts: no
   vars:
     users:
     - "cpiveteau"
@@ -10,38 +11,29 @@
     - name: Upgrade packages
       apt: upgrade=safe
 
-    - name: Make sure we have a 'wheel' group
-      group:
-        name=wheel
-        state=present
-
-    - name: Allow wheel group to have passwordless sudo
-      lineinfile:
-        dest: /etc/sudoers
-        state: present
-        regexp: '^%wheel'
-        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
-
     - name: Create users accounts
       user:
-        name: "{{item}}"
+        name: "{{ item }}"
         state: present
         createhome: yes
-        groups: whell
         append: yes
         shell: /bin/bash
         # this is just a default password,it's SHA512 for "changeme"
         password: $6$lTAu5CUHVq$LPv0QEZukItGS9rNYVDj8IKlfcP2UoiYMymTBWyOTjJsrhXnSXnyyRouxB/9U703W0U3y2fdExNY4XBZnnwp8.
         update_password: on_create
-      with_items: "{{users}}"
+      with_items: "{{ users }}"
+
+    - name: Create sudoer's filename
+      copy:
+        dest: /etc/sudoers.d/cpiveteau
+        content: "cpiveteau ALL=(ALL)  NOPASSWD: ALL"
+      with_items: "{{ users }}"
 
     - name: Add .ssh directories
       file:
-          path: /home/{{item}}/.ssh
-          state: directory
-          mode: 0700
-          owner: "{{item}}"
-          group: "{{item}}"
+        path: /home/"{{ item }}"/.ssh
+        state: directory
+        mode: 0700
       with_items: users
 
     - name: Add authorized keys
@@ -52,8 +44,24 @@
 
     - name: Disallow root SSH access
       lineinfile: 
-              dest: /etc/ssh/sshd_config
-              regexp: "^PermitRootLogin"
-              line: "PermitRootLogin no"
-              state: present
-      notify: Restart ssh
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin no"
+        state: present
+        backup: yes
+      notify: restart ssh
+
+    - name: Disable Password Authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: "PasswordAuthentication no"
+        state: present
+        backup: yes
+      notify: restart ssh
+
+  handlers:
+    - name: restart ssh
+      service:
+        name=sshd
+        state=restarted
