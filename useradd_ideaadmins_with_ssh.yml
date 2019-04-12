@@ -25,8 +25,8 @@
 
     - name: Create sudoer's filename
       copy:
-        dest: /etc/sudoers.d/cpiveteau
-        content: "cpiveteau ALL=(ALL)  NOPASSWD: ALL"
+        dest: /etc/sudoers.d/{{ item }}
+        content: "{{ item }} ALL=(ALL)  NOPASSWD: ALL"
       with_items: "{{ users }}"
 
     - name: Add .ssh directories
@@ -34,7 +34,7 @@
         path: /home/"{{ item }}"/.ssh
         state: directory
         mode: 0700
-      with_items: users
+      with_items: "{{ users }}"
 
     - name: Add authorized keys
       authorized_key:
