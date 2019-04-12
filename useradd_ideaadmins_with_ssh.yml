@@ -10,6 +10,7 @@
     - "mbenoit"
     - "mmainchain"
     - "bpottier"
+    - "nleborgne"
   tasks:
 
     - name: Upgrade packages
