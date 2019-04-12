@@ -6,6 +6,10 @@
   vars:
     users:
     - "cpiveteau"
+    - "cprunier"
+    - "mbenoit"
+    - "mmainchain"
+    - "bpottier"
   tasks:
 
     - name: Upgrade packages
