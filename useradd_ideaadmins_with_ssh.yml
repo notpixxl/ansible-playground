@@ -4,14 +4,20 @@
   become_user: root
   gather_facts: no
   vars:
-    users:
-    - "cpiveteau"
-    - "cprunier"
-    - "mbenoit"
-    - "mmainchain"
-    - "bpottier"
-    - "nleborgne"
+     users:
+     - "cpiveteau"
+     - "mbenoit"
+     - "bpottier"
+     - "cprunier"
+     - "nleborgne"
+     - vagra"mmainchain"
+
   tasks:
+
+    #- name: Include vars of staff.yml into the 'users' variable
+    #  include_vars:
+    #    file: group_vars/staff.yml
+    #    name: users
 
     - name: Upgrade packages
       apt: upgrade=safe

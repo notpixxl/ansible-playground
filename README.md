@@ -29,3 +29,11 @@ ansible-playbook ./playbooks.yml -i ./hosts --private-key=~/.vagrant.d/insecure_
 ```bash
 ssh -p 2222 username@localhost
 ```
+## useradd_ideaadmins Playbook
+* Modify group_vars/staff.yml ans add your new admin username
+* Add the username.key.pub to files directory
+* Run the playbook
+
+```bash
+ansible-playbook useradd_ideaadmins_with_ssh.yml -i hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
+```
