@@ -3,21 +3,21 @@
   become: true
   become_user: root
   gather_facts: no
-  vars:
-     users:
-     - "cpiveteau"
-     - "mbenoit"
-     - "bpottier"
-     - "cprunier"
-     - "nleborgne"
-     - vagra"mmainchain"
+  #vars:
+     #users:
+     #- "cpiveteau"
+     #- "mbenoit"
+     #- "bpottier"
+     #- "cprunier"
+     #- "nleborgne"
+     #- "mmainchain"
 
   tasks:
 
-    #- name: Include vars of staff.yml into the 'users' variable
-    #  include_vars:
-    #    file: group_vars/staff.yml
-    #    name: users
+    - name: Include vars of staff.yml into the 'users' variable
+      include_vars:
+        file: group_vars/staff.yml
+        
 
     - name: Upgrade packages
       apt: upgrade=safe
