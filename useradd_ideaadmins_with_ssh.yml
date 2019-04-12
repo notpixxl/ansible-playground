@@ -3,15 +3,7 @@
   become: true
   become_user: root
   gather_facts: no
-  #vars:
-     #users:
-     #- "cpiveteau"
-     #- "mbenoit"
-     #- "bpottier"
-     #- "cprunier"
-     #- "nleborgne"
-     #- "mmainchain"
-
+  
   tasks:
 
     - name: Include vars of staff.yml into the 'users' variable
