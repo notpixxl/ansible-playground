@@ -29,6 +29,3 @@ ansible-playbook ./playbooks.yml -i ./hosts --private-key=~/.vagrant.d/insecure_
 ```bash
 ssh -p 2222 username@localhost
 ```
-
-
-
