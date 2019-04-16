@@ -1,0 +1,7 @@
+---
+# tasks file for glances
+- name: Install glances
+  apt:
+    name: glances
+    state: present
+    update_cache: true

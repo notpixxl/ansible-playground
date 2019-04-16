@@ -37,3 +37,8 @@ ssh -p 2222 username@localhost
 ```bash
 ansible-playbook useradd_ideaadmins_with_ssh.yml -i hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
+
+## Init a new role repository
+```bash
+ansible-galaxy init nom_du_role --init-path=./roles --offline
+```

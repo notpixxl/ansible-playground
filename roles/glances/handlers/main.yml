@@ -1,0 +1,6 @@
+---
+# handlers file for glances
+- name: restart htop
+  service:
+    name: glances
+    state: restarted

@@ -25,6 +25,7 @@
         password: $6$lTAu5CUHVq$LPv0QEZukItGS9rNYVDj8IKlfcP2UoiYMymTBWyOTjJsrhXnSXnyyRouxB/9U703W0U3y2fdExNY4XBZnnwp8.
         update_password: on_create
       with_items: "{{ users }}"
+      when: "ansible_facts['os_family'] == 'Debian'"
 
     - name: Create sudoer's filename
       copy:
