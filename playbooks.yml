@@ -1,14 +1,10 @@
 ---
-- hosts: default
-  remote_user: vagrant
-  become: yes
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: yes
+  
   tasks:
-    - name: test connection
-      ping:
     - include_role:
-        name: fail2ban
-      vars:
-        fail2ban_default_jail_findtime: 500
-        fail2ban_default_jail_maxretry: 3
-        fail2ban_default_jail_bantime: 3600
+        name: htop
       when: "ansible_facts['os_family'] == 'Debian'"

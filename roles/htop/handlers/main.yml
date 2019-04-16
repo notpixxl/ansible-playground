@@ -1,0 +1,6 @@
+---
+# handlers file for htop
+- name: restart htop
+  service:
+    name: htop
+    state: restarted

@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Christophe Piveteau <cpiveteau@groupe-idea.com>
+  description: This role allowed to install and configure htop
+  company: idea
+  license: IDEA
+  min_ansible_version: 2.4
+  platforms:
+  - name: Debian
+    versions:
+    - 9
+  galaxy_tags:
+    - htop
+    - debian
+dependencies: []
