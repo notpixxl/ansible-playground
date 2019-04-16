@@ -8,3 +8,5 @@
       when: "ansible_facts['os_family'] == 'Debian'"
     - role: glances
       when: "ansible_facts['os_family'] == 'Debian'"
+    - role: snmpd
+      when: "ansible_facts['os_family'] == 'Debian'"
