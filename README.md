@@ -42,3 +42,4 @@ ansible-playbook useradd_ideaadmins_with_ssh.yml -i hosts --private-key=~/.vagra
 ```bash
 ansible-galaxy init nom_du_role --init-path=./roles --offline
 ```
+
