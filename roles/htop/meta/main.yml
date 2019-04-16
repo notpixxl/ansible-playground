@@ -5,10 +5,11 @@ galaxy_info:
   license: IDEA
   min_ansible_version: 2.4
   platforms:
-  - name: Debian
+  - name: Debian, Ubuntu
     versions:
     - 9
   galaxy_tags:
     - htop
     - debian
+    - ubuntu
 dependencies: []

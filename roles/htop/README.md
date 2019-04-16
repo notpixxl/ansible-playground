@@ -6,7 +6,7 @@ This role allowed to install and configure htop.
 Requirements
 ------------
 
-This roles should be used to provision Debian 9 target.
+This roles should be used to provision Debian 9 or Ubuntu 18.04 target.
 It can be runned conditionnaly:
 ```yaml
 - hosts: target

@@ -5,6 +5,3 @@
     name: htop
     state: present
     update_cache: true
-    
-  notify:
-    - restart htop
