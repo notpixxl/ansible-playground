@@ -7,4 +7,4 @@
     update_cache: true
     
   notify:
-    - restart fail2ban
+    - restart htop
