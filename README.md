@@ -14,14 +14,14 @@
 * ping module is not a classic ping. It performs a ping via ssh
 
 ```bash
-ansible default -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping-vvv
+ansible db1 -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping -vvv
 ```
 
 ## Run a playbook
 A playbook is a set of 'plays' each play is related to a hosts group and contains a tasks list to run. It is possible to run some hooks called handlers at the end of a tasks.
 
 ```bash
-ansible-playbook ./playbooks.yml -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
+ansible-playbook ./idea_provisionning.yml -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
 
 ## Test Vagrant SSH connection with another user

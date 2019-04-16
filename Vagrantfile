@@ -10,9 +10,20 @@ Vagrant.configure("2") do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  # Multi-Machine config
+  config.vm.define "web1" do |web1|
+    web1.vm.box = "ubuntu/bionic64"
+    config.ssh.dsa_authentication = false
+  end
+  
+  config.vm.define "db1" do |db1|
+    db1.vm.box = "debian/stretch64"
+    config.ssh.dsa_authentication = false
+  end  
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "base"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -67,5 +78,5 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.ssh.dsa_authentication = false
+  #config.ssh.dsa_authentication = false
 end
