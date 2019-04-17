@@ -14,12 +14,14 @@ Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
+    config.vm.network "private_network", type: "dhcp"
   end
   
   config.vm.define "db1" do |db1|
     db1.vm.box = "debian/stretch64"
     config.ssh.dsa_authentication = false
-  end  
+    config.vm.network "private_network", type: "dhcp"
+  end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
