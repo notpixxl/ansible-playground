@@ -1,0 +1,8 @@
+# vars file for idea severs provisionning
+---
+idea_dependencies:
+  - vim
+  - ncdu
+  - open-vm-tools
+  - net-tools
+  - sudo
