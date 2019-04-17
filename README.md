@@ -43,3 +43,7 @@ ansible-playbook useradd_ideaadmins_with_ssh.yml -i hosts --private-key=~/.vagra
 ansible-galaxy init nom_du_role --init-path=./roles --offline
 ```
 
+## Add package to IDEA provisionning
+* The playbook idea_provisionning.yml is base on a list of packages installed with no configuration
+* To add a new package to the list please add it to the list in group_vars/idea_dependencies.yml
+* Please be warned that this list is only for package that don't need a custom conf, if you need to configure a package please make a role instead.
