@@ -15,17 +15,33 @@ Vagrant.configure("2") do |config|
     web1.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
     config.vm.network "private_network", type: "dhcp"
+    #config.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
   end
   
-  config.vm.define "db1" do |db1|
-    db1.vm.box = "debian/stretch64"
+  config.vm.define "ndb0" do |ndb0|
+    ndb0.vm.box = "debian/stretch64"
     config.ssh.dsa_authentication = false
     config.vm.network "private_network", type: "dhcp"
+    #config.vm.network "forwarded_port", guest: 22, host: 2223, id: "ssh"
+  end
+
+  config.vm.define "ndb1" do |ndb1|
+    ndb1.vm.box = "debian/stretch64"
+    config.ssh.dsa_authentication = false
+    config.vm.network "private_network", type: "dhcp"
+    #config.vm.network "forwarded_port", guest: 22, host: 2224, id: "ssh"
+  end
+
+  config.vm.define "ndbmgm" do |ndbmgm|
+    ndbmgm.vm.box = "debian/stretch64"
+    config.ssh.dsa_authentication = false
+    config.vm.network "private_network", type: "dhcp"
+    #config.vm.network "forwarded_port", guest: 22, host: 2225, id: "ssh"
   end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "base"
+  # config.vm.box = "base"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
