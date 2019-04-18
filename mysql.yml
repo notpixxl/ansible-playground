@@ -1,0 +1,9 @@
+---
+- hosts: db-servers
+  become: yes
+  become_user: root
+  gather_facts: yes
+  roles:
+    - geerlingguy.mysql
+  vars_files:
+    - vault.yml
