@@ -118,7 +118,7 @@ mysql_users:
 #     priv: *.*:USAGE
     - name: cpiveteau
       host: "%"
-      password: secret
+      password: '{{ cpiveteau_database_password }}'
       priv: "*.*:ALL"
 
 # Replication settings (replication is only enabled if master/user have values).
