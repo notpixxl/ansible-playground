@@ -81,7 +81,21 @@ The MySQL users and their privileges. A user has the values:
 
 The formats of these are the same as in the mysql_user module.
 
-* To add a new user to mysql provisionning add the it in the mysql_user section 
+* To add a new database to mysql servers add it to the mysql_databases section 
+
+```yml
+mysql_databases:
+#   - name: example
+#     collation: utf8_general_ci
+#     encoding: utf8
+#     replicate: 1
+    - name: testdb
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+```      
+
+* To add a new user to mysql provisionning add it to the mysql_user section 
 ```yml
 mysql_users:
 #   - name: example
