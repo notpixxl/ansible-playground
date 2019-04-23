@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     ndb0.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
     config.vm.network "private_network", type: "dhcp"
-    #config.vm.network "forwarded_port", guest: 22, host: 2223, id: "ssh"
+    config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
   end
 
   # Every Vagrant development environment requires a box. You can search for
