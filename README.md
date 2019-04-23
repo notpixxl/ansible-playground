@@ -47,3 +47,7 @@ ansible-galaxy init nom_du_role --init-path=./roles --offline
 * The playbook idea_provisionning.yml is base on a list of packages installed with no configuration
 * To add a new package to the list please add it to the list in group_vars/idea_dependencies.yml
 * Please be warned that this list is only for package that don't need a custom conf, if you need to configure a package please make a role instead.
+
+## mySQL Provisionning
+This playbook is based on ansible-galaxy geerlingguy's playbook, some modifications as been made on the files defaults/main.yml of the role to feet our environnement. To note include password in this file you can add a variable hold by a vault file.
+###Requirements
