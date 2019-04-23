@@ -49,6 +49,25 @@ ansible-galaxy init nom_du_role --init-path=./roles --offline
 * Please be warned that this list is only for package that don't need a custom conf, if you need to configure a package please make a role instead.
 
 ## mySQL Provisionning
-This playbook is based on ansible-galaxy geerlingguy's playbook, some modifications as been made on the files defaults/main.yml of the role to feet our environnement. To note include password in this file you can add a variable hold by a vault file.
+This playbook is based on ansible-galaxy geerlingguy's playbook <https://github.com/geerlingguy/ansible-role-mysql>, some modifications have been made on the defaults/main.yml role file to feet our environnement. Include clear password in this file is prohibited you can add a variable hold by vault.yml vault file.
 
-###Requirements
+* To add a new user to mysql provisionning add the it in the mysql_user section 
+```yml
+mysql_users:
+#   - name: example
+#     host: 127.0.0.1
+#     password: secret
+#     priv: *.*:USAGE
+    - name: cpiveteau
+      host: "%"
+      password: '{{ cpiveteau_database_password }}'
+      priv: "*.*:ALL"
+```
+* Modify the vault.yml file, you have to know the vault password
+```bash
+ansible-vault edit vault.yml
+```
+* Run the playbook with the prompt switch to demand for vault password 
+```bash
+ansible-playbook --vault-id @prompt mysql.yml -i hosts
+```
