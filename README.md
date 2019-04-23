@@ -36,7 +36,8 @@ config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
 ```
 * To connect to your service from your host 
 ```bash
-
+mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
+```
 
 ## useradd_ideaadmins Playbook
 * Modify group_vars/staff.yml ans add your new admin username
