@@ -29,6 +29,15 @@ ansible-playbook ./idea_provisionning.yml -i ./hosts --private-key=~/.vagrant.d/
 ```bash
 ssh -p 2222 username@localhost
 ```
+## Test vagrant mysql service from host
+* Append a new line on vagrant file on your sql server for forward 3306 port to host 
+```bash
+config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
+```
+* To connect to your service from your host 
+```bash
+
+
 ## useradd_ideaadmins Playbook
 * Modify group_vars/staff.yml ans add your new admin username
 * Add the username.key.pub to files directory
@@ -49,7 +58,27 @@ ansible-galaxy init nom_du_role --init-path=./roles --offline
 * Please be warned that this list is only for package that don't need a custom conf, if you need to configure a package please make a role instead.
 
 ## mySQL Provisionning
-This playbook is based on ansible-galaxy geerlingguy's playbook <https://github.com/geerlingguy/ansible-role-mysql>, some modifications have been made on the defaults/main.yml role file to feet our environnement. Include clear password in this file is prohibited you can add a variable hold by vault.yml vault file.
+mysql.yml playbook is based on ansible-galaxy geerlingguy's playbook <https://github.com/geerlingguy/ansible-role-mysql>, some modifications have been made on the defaults/main.yml role file to feet our environnement. Include clear password in this file is prohibited you can add a variable hold by vault.yml vault file.
+```yml
+mysql_databases: []
+```
+The MySQL databases to create. A database has the values name, encoding (defaults to utf8), collation (defaults to utf8_general_ci) and replicate (defaults to 1, only used if replication is configured). The formats of these are the same as in the mysql_db module.
+
+You can also delete a database (or ensure it's not on the server) by setting state to absent (defaults to present).
+```yml
+mysql_users: []
+```
+The MySQL users and their privileges. A user has the values:
+
+    * name
+    * host (defaults to localhost)
+    * password (can be plaintext or encrypted—if encrypted, set encrypted: yes)
+    * encrypted (defaults to no)
+    * priv (defaults to *.*:USAGE)
+    * append_privs (defaults to no)
+    * state (defaults to present)
+
+The formats of these are the same as in the mysql_user module.
 
 * To add a new user to mysql provisionning add the it in the mysql_user section 
 ```yml
@@ -67,7 +96,7 @@ mysql_users:
 ```bash
 ansible-vault edit vault.yml
 ```
-* Run the playbook with the prompt switch to demand for vault password 
+* Run the playbook with the prompt switch to ask for vault password 
 ```bash
 ansible-playbook --vault-id @prompt mysql.yml -i hosts
 ```
