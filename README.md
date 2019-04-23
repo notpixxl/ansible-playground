@@ -50,4 +50,5 @@ ansible-galaxy init nom_du_role --init-path=./roles --offline
 
 ## mySQL Provisionning
 This playbook is based on ansible-galaxy geerlingguy's playbook, some modifications as been made on the files defaults/main.yml of the role to feet our environnement. To note include password in this file you can add a variable hold by a vault file.
+
 ###Requirements
