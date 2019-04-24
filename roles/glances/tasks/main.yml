@@ -1,5 +1,5 @@
 ---
-# tasks file for glances
+# tasks file for glance
 - name: Install glances
   apt:
     name: glances
