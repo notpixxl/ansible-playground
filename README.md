@@ -26,6 +26,10 @@ ansible-playbook ./idea_provisionning.yml -i ./hosts --private-key=~/.vagrant.d/
 ## Add 1804 Source.List managment
 the add_1804_sourcelist.yml is created for modified or add new sourcelist to based install Ubuntu 18.04, need to run it before idea_provisionning.yml
 
+```bash
+ansible-playbook -i keycloak add_1804_sourcelist.yml --ask-become-pass
+```
+
 ## Test Vagrant SSH connection with another user
 
 ```bash
