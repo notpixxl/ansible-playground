@@ -23,6 +23,8 @@ A playbook is a set of 'plays' each play is related to a hosts group and contain
 ```bash
 ansible-playbook ./idea_provisionning.yml -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
+## Add 1804 Source.List managment
+the add_1804_sourcelist.yml is created for modified or add new sourcelist to based install Ubuntu 18.04, need to run it before idea_provisionning.yml
 
 ## Test Vagrant SSH connection with another user
 

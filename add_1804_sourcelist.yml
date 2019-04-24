@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  gather_facts: yes
+
+  tasks:
+
+    # Add specified repository into sources list.
+    - apt_repository:
+       repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
+       state: present
+    - apt_repository:   
+       repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
+       state: present
+    - apt_repository: 
+       repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+       state: present
+    - apt_repository:   
+       repo: deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
+       state: present
+    
+    # Add source repository into sources list.
+    - apt_repository:
+       repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
+       state: present
+    - apt_repository:   
+       repo: deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
+       state: present
+    - apt_repository:   
+       repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+       state: present
+    - apt_repository:   
+       repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
+       state: present     
