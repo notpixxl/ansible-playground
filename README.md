@@ -16,6 +16,25 @@
 ```bash
 ansible db1 -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping -vvv
 ```
+## Extract Ansible Facts from an host 
+To gather all ansible_facts from an host you can run this command 
+
+```bash
+ansible all -m setup -i hosts > ansible_facts_hosts.txt
+```
+
+This will create a file on your repo with all the usable facts for your Guests servers
+
+```xml
+        }, 
+        "ansible_distribution": "Ubuntu", 
+        "ansible_distribution_file_parsed": true, 
+        "ansible_distribution_file_path": "/etc/os-release", 
+        "ansible_distribution_file_variety": "Debian", 
+        "ansible_distribution_major_version": "18", 
+        "ansible_distribution_release": "bionic", 
+        "ansible_distribution_version": "18.04",
+```
 
 ## Run a playbook
 A playbook is a set of 'plays' each play is related to a hosts group and contains a tasks list to run. It is possible to run some hooks called handlers at the end of a tasks.

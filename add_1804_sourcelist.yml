@@ -10,26 +10,34 @@
     - apt_repository:
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository:   
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository: 
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository:   
        repo: deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     
     # Add source repository into sources list.
     - apt_repository:
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository:   
        repo: deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository:   
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
        state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")
     - apt_repository:   
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
-       state: present     
+       state: present
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "1804")     
