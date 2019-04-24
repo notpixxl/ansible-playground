@@ -10,34 +10,49 @@
     - apt_repository:
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository:   
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository: 
        repo: deb http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository:   
        repo: deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     
     # Add source repository into sources list.
     - apt_repository:
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository:   
        repo: deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository:   
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
     - apt_repository:   
        repo: deb-src http://in.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
        state: present
-       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")     
+      when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+
+    - name: Upgrade all packages to the latest version
+      apt:
+       name: "*"
+       state: latest
+       update_cache: yes
+       force_apt_get: yes
+
+    - name: Remove useless packages from the cache
+      apt:
+       autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+       autoremove: yes 
