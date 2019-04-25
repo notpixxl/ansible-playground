@@ -40,6 +40,7 @@
         shell: /bin/bash
         # this is just a default password,it's SHA512 for "changeme"
         password: $6$Yk./2YcbJW$1tqH5tsct0HdTiYBjRO8vC5htvWOzQKdq0IplHDJJEM//wyBwGu9.DhsSwgIzBLxcJueT1EgUab3OrWHJ1Wiv0
+        update_password: on_create
       with_items: "{{ users }}"
       when: "ansible_facts['os_family'] == 'Debian'"
 
