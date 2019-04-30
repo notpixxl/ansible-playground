@@ -1,0 +1,5 @@
+[supervision]
+srv-ces ansible_ssh_host=10.99.99.240 ansible_ssh_port=22 
+
+[veeamproxy]
+svlxappvm05 ansible_ssh_host=10.38.0.215 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3

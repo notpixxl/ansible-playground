@@ -1,2 +1,0 @@
-[backupservers]
-svlxappvm05 ansible_ssh_host=10.38.0.97 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3

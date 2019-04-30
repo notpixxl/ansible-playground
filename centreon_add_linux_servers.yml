@@ -1,0 +1,13 @@
+---
+- hosts: veeamproxy
+  become: true
+  become_user: root
+  gather_facts: yes
+
+  tasks:
+     - name: centreon add host
+       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a add -v '{{ inventory_hostname }};{{ inventory_hostname }};{{ ansible_default_ipv4.address }};generic-host;central;Linux-Servers'
+       when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
+       delegate_to: srv-ces
+
+       

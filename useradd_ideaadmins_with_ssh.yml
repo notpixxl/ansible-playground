@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: backupservers
   become: true
   become_user: root
   gather_facts: yes
@@ -15,21 +15,6 @@
         name: sudo
         state: present
         update_cache: yes
-        
-    - name: Upgrade all packages to the latest version
-      apt:
-       name: "*"
-       state: latest
-       update_cache: yes
-       force_apt_get: yes
-
-    - name: Remove useless packages from the cache
-      apt:
-       autoclean: yes
-
-    - name: Remove dependencies that are no longer required
-      apt:
-       autoremove: yes
 
     - name: Create users accounts
       user:
