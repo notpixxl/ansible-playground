@@ -1,0 +1,28 @@
+---
+- name: create scripts dir
+  file:
+    path: /root/scripts
+    state: directory
+    mode: 0700
+
+- name: create backups dir
+  file:
+   path: /root/scripts/backups
+   state: directory
+   mode: 0700     
+
+- name: Copy .backup script to directory
+  template:
+    src: "backup_bdd.sh.j2"
+    dest: "/root/scripts/backup_bdd.sh"
+    owner: root
+    group: root
+    mode: 0700
+
+- name: create cron.hourly entry
+  file:
+    src: /root/scripts/backup_bdd.sh
+    dest: /etc/cron.hourly/backup_bdd.sh
+    owner: root
+    group: root
+    state: link      

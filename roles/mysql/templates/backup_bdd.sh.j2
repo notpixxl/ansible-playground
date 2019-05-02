@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+#!/bin/bash
+
+# Parameters
+USER='{{ mysql_root_username }}'
+PASS='{{ mysql_root_password }}'
+DATE=`date +%y_%m_%d_%Hh`
+LISTEBDD=$( echo 'show databases' | mysql -u $USER -p$PASS )
+
+#Loop for each DB and autols
+for SQL in $LISTEBDD
+
+do
+
+if [ $SQL != "information_schema" ] && [ $SQL != "mysql" ] && [ $SQL != "Database" ] && [ $SQL != "performance_schema" ] && [ $SQL != "sys" ]; then
+
+#echo $SQL
+mysqldump -u $USER -p$PASS $SQL | gzip > /root/scripts/backups/$SQL"_mysql_"$DATE.sql.gz
+
+find /root/scripts/backups/ -type f -mmin +1440 -delete
+fi
+
+done

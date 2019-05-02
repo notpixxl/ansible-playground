@@ -7,4 +7,3 @@
     - vault.yml 
   roles:
     - mysql
-   
