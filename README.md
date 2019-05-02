@@ -20,7 +20,7 @@ ansible db1 -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagran
 To gather all ansible_facts from an host you can run this command 
 
 ```bash
-ansible all -m setup -i hosts > ansible_facts_hosts.txt
+ansible all -m setup -i hostfile_vagrant_playground > ansible_facts_hostfile_vagrant_playground.txt
 ```
 
 This will create a file on your repo with all the usable facts for your Guests servers
@@ -40,13 +40,13 @@ This will create a file on your repo with all the usable facts for your Guests s
 A playbook is a set of 'plays' each play is related to a hosts group and contains a tasks list to run. It is possible to run some hooks called handlers at the end of a tasks.
 
 ```bash
-ansible-playbook ./idea_provisionning.yml -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
+ansible-playbook ./plbk_idea_provisionning.yml -i ./hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
 ## Add 1804 Source.List managment
 the add_1804_sourcelist.yml is created for modified or add new sourcelist to based install Ubuntu 18.04, need to run it before idea_provisionning.yml
 
 ```bash
-ansible-playbook -i keycloak add_1804_sourcelist.yml --ask-become-pass
+ansible-playbook -i hostfile_keycloak plbk_add_1804_sourcelist.yml --ask-become-pass
 ```
 
 ## Test Vagrant SSH connection with another user
@@ -70,7 +70,7 @@ mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
 * Run the playbook
 
 ```bash
-ansible-playbook useradd_ideaadmins_with_ssh.yml -i hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant
+ansible-playbook plbk_useradd_ideaadmins_with_ssh.yml -i hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
 
 ## Init a new role repository
@@ -138,5 +138,5 @@ ansible-vault edit vault.yml
 ```
 * Run the playbook with the prompt switch to ask for vault password 
 ```bash
-ansible-playbook --vault-id @prompt mysql.yml -i hosts
+ansible-playbook --vault-id @prompt plbk_mysql.yml -i hostfile_vagrant_playground
 ```
