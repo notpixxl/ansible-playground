@@ -14,7 +14,7 @@
 * ping module is not a classic ping. It performs a ping via ssh
 
 ```bash
-ansible db1 -i ./hosts --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping -vvv
+ansible all -i ./hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping -vvv
 ```
 ## Extract Ansible Facts from an host 
 To gather all ansible_facts from an host you can run this command 

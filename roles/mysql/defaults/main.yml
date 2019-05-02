@@ -166,6 +166,7 @@ mysql_users:
 #     priv: *.*:USAGE
     - name: cpiveteau
       host: "%"
+      update_password: on_create
       password: '{{ cpiveteau_mysql_password }}'
       priv: "*.*:ALL"
 
