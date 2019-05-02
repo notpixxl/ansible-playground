@@ -168,6 +168,78 @@ mysql_users:
       host: "%"
       password: '{{ mysql_default_password }}'
       priv: "*.*:ALL"
+    - name: mbenoit
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: jgouvernayre
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: cprunier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: bpottier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_test.*:ALL/keycloak_demo.*:ALL/keycloak_staging.*:ALL/keycloak.*:ALL/myway_transfer_requests_export_demo.*:ALL/myway_transfer_requests_export_staging.*:ALL/myway_transfer_requests_export_test.*:ALL/myway_transfer_requests_export.*:ALL/export_OL_UC_demo.*:ALL/export_OL_UC_staging.*:ALL/export_OL_UC_test.*:ALL/export_OL_UC.*:ALL"
+    - name: nleborgne
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_test.*:ALL/keycloak_demo.*:ALL/keycloak_staging.*:ALL/keycloak.*:ALL/myway_transfer_requests_export_demo.*:ALL/myway_transfer_requests_export_staging.*:ALL/myway_transfer_requests_export_test.*:ALL/myway_transfer_requests_export.*:ALL/export_OL_UC_demo.*:ALL/export_OL_UC_staging.*:ALL/export_OL_UC_test.*:ALL/export_OL_UC.*:ALL"
+    - name: mmainchain
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_test.*:ALL/keycloak_demo.*:ALL/keycloak_staging.*:ALL/keycloak.*:ALL/myway_transfer_requests_export_demo.*:ALL/myway_transfer_requests_export_staging.*:ALL/myway_transfer_requests_export_test.*:ALL/myway_transfer_requests_export.*:ALL/export_OL_UC_demo.*:ALL/export_OL_UC_staging.*:ALL/export_OL_UC_test.*:ALL/export_OL_UC.*:ALL"
+    - name: keycloak_test
+      host: "%"
+      password: '{{ mysql_keycloak_test_password }}'
+      priv: "keycloak_test.*:ALL"
+    - name: keycloak_demo
+      host: "%"
+      password: '{{ mysql_keycloak_demo_password }}'
+      priv: "keycloak_demo.*:ALL"
+    - name: keycloak_staging
+      host: "%"
+      password: '{{ mysql_keycloak_staging_password }}'
+      priv: "keycloak_staging.*:ALL"
+    - name: keycloak
+      host: "%"
+      password: '{{ mysql_keycloak_password }}'
+      priv: "keycloak.*:ALL"
+    # - name: myway_transfer_requests_export_test
+    #   host: "%"
+    #   password: '{{ mysql_myway_transfer_requests_export_test_password }}'
+    #   priv: "myway_transfer_requests_export_test.*:ALL"
+    # - name: myway_transfer_requests_export_demo
+    #   host: "%"
+    #   password: '{{ mysql_myway_transfer_requests_export_demo_password }}'
+    #   priv: "myway_transfer_requests_export_demo.*:ALL"
+    # - name: myway_transfer_requests_export_staging
+    #   host: "%"
+    #   password: '{{ mysql_myway_transfer_requests_export_staging_password }}'
+    #   priv: "myway_transfer_requests_export_staging.*:ALL"
+    # - name: myway_transfer_requests_export
+    #   host: "%"
+    #   password: '{{ mysql_myway_transfer_requests_export_password }}'
+    #   priv: "myway_transfer_requests_export.*:ALL"
+    - name: export_OL_UC_test
+      host: "%"
+      password: '{{ mysql_export_OL_UC_test_password }}'
+      priv: "export_OL_UC_test.*:ALL"
+    - name: export_OL_UC_demo
+      host: "%"
+      password: '{{ mysql_export_OL_UC_demo_password }}'
+      priv: "export_OL_UC_demo.*:ALL"
+    - name: export_OL_UC_staging
+      host: "%"
+      password: '{{ mysql_export_OL_UC_staging_password }}'
+      priv: "export_OL_UC_staging.*:ALL"
+    - name: export_OL_UC
+      host: "%"
+      password: '{{ mysql_export_OL_UC_password }}'
+      priv: "export_OL_UC.*:ALL"                      
 
 # Replication settings (replication is only enabled if master/user have values).
 mysql_server_id: "1"
