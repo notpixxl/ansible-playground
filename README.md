@@ -46,7 +46,7 @@ ansible-playbook ./plbk_idea_provisionning.yml -i ./hostfile_vagrant_playground 
 the add_1804_sourcelist.yml is created for modified or add new sourcelist to based install Ubuntu 18.04, need to run it before idea_provisionning.yml
 
 ```bash
-ansible-playbook -i hostfile_keycloak plbk_add_1804_sourcelist.yml --ask-become-pass
+ansible-playbook -i hostfile_vagrant_playground plbk_add_1804_sourcelist.yml --ask-become-pass
 ```
 
 ## Test Vagrant SSH connection with another user
