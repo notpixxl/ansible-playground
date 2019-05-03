@@ -151,7 +151,7 @@ ansible-vault create vault.yml
 ```
 To edit a vault :
 ```bash
-ansible-vault create vault.yml
+ansible-vault edit vault.yml
 ```
 To change a vault key (previous key is needed)
 ```bash
