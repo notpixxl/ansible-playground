@@ -17,12 +17,10 @@
     dest: "/root/scripts/backup_bdd.sh"
     owner: root
     group: root
-    mode: 0700
+    mode: a+x
 
-- name: create cron.hourly entry
-  file:
-    src: /root/scripts/backup_bdd.sh
-    dest: /etc/cron.hourly/backup_bdd.sh
-    owner: root
-    group: root
-    state: link      
+- name: Creates an entry for backup job in Cron
+  cron:
+    name: "mySQL Backup Job hourly"
+    special_time: hourly
+    job: "/root/scripts/backup_bdd.sh"   
