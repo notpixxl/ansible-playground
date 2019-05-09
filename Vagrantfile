@@ -19,28 +19,28 @@ Vagrant.configure("2") do |config|
   # end
   
   config.vm.define "ndb0" do |ndb0|
-    ndb0.vm.box = "debian/stretch64"
+    ndb0.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
-    config.vm.network "public_network", bridge: "wlp1s0"
+    config.vm.network "public_network", bridge: "dhcp"
     config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
   end
 
   config.vm.define "ndb1" do |ndb1|
-    ndb1.vm.box = "debian/stretch64"
+    ndb1.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
     config.vm.network "private_network", type: "dhcp"
     config.vm.network "forwarded_port", guest: 3306, host: 3307, id: "mysql"
   end
 
   config.vm.define "ndb2" do |ndb2|
-    ndb2.vm.box = "debian/stretch64"
+    ndb2.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
     config.vm.network "public_network", bridge: "dhcp"
     config.vm.network "forwarded_port", guest: 3306, host: 3308, id: "mysql"
   end
 
   config.vm.define "ndb3" do |ndb3|
-    ndb3.vm.box = "debian/stretch64"
+    ndb3.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
     config.vm.network "public_network", bridge: "dhcp"
     config.vm.network "forwarded_port", guest: 3306, host: 3309, id: "mysql"
