@@ -140,6 +140,8 @@ ansible-vault edit vault.yml
 ```bash
 ansible-playbook --vault-id @prompt plbk_mysql.yml -i hostfile_vagrant_playground
 ```
+> Note: If you get an error like ERROR 1698 (28000): Access denied for user 'root'@'localhost' (using password: YES) when trying to log in from the CLI you might need to run as root or sudoer.
+
 ## Ansible Vault
 * Because Ansible tasks, handlers, and other objects are data, these can also be encrypted with vault. If you’d like to not expose what variables you are using, you can keep an individual task file entirely encrypted.
 * Vault key is asked when you run the mysql playbook
