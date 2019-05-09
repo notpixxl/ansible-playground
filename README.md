@@ -142,10 +142,10 @@ ansible-playbook --vault-id @prompt plbk_mysql.yml -i hostfile_vagrant_playgroun
 ```
 ## Connect to mysql via Vagrant
 You can ssh to your vagrant Host and try  to connect with root account 
-'''bash
+```bash
 vagrant ssh ndb0
 sudo mysql-u root -p
-'''
+```
 > Note: If you get an error like ERROR 1698 (28000): Access denied for user 'root'@'localhost' (using password: YES) when trying to log in from the CLI you might need to run as root or sudoer.
 
 ## Ansible Vault
