@@ -1,0 +1,55 @@
+mysql_databases:
+    - name: keycloak
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+    - name: transfer_requests_export
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+    - name: export_OL_UC
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+
+mysql_users:
+    - name: cpiveteau
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: mbenoit
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: jgouvernayre
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: cprunier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: bpottier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak.*:ALL/transfer_requests_export.*:ALL/export_OL_UC.*:ALL"
+    - name: nleborgne
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak.*:ALL/transfer_requests_export.*:ALL/export_OL_UC.*:ALL"
+    - name: mmainchain
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak.*:ALL/transfer_requests_export.*:ALL/export_OL_UC.*:ALL"
+    - name: keycloak
+      host: "%"
+      password: '{{ mysql_keycloak_password }}'
+      priv: "keycloak.*:ALL"
+    - name: transfer_requests_export
+      host: "%"
+      password: '{{ mysql_transfer_requests_export_password }}'
+      priv: "transfer_requests_export.*:ALL"
+    - name: export_OL_UC
+      host: "%"
+      password: '{{ mysql_export_OL_UC_password }}'
+      priv: "export_OL_UC.*:ALL"

@@ -1,0 +1,55 @@
+mysql_databases:
+    - name: keycloak_staging
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+    - name: transfer_requests_export_staging
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+    - name: export_OL_UC_staging
+      collation: utf8_general_ci
+      encoding: utf8
+      replicate: 1
+
+mysql_users:
+    - name: cpiveteau
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: mbenoit
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: jgouvernayre
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: cprunier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "*.*:ALL"
+    - name: bpottier
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_staging.*:ALL/transfer_requests_export_staging.*:ALL/export_OL_UC_staging.*:ALL"
+    - name: nleborgne
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_staging.*:ALL/transfer_requests_export_staging.*:ALL/export_OL_UC_staging.*:ALL"
+    - name: mmainchain
+      host: "%"
+      password: '{{ mysql_default_password }}'
+      priv: "keycloak_staging.*:ALL/transfer_requests_export_staging.*:ALL/export_OL_UC_staging.*:ALL"
+    - name: keycloak_staging
+      host: "%"
+      password: '{{ mysql_keycloak_staging_password }}'
+      priv: "keycloak_staging.*:ALL"
+    - name: transfer_requests_export_staging
+      host: "%"
+      password: '{{ mysql_transfer_requests_export_staging_password }}'
+      priv: "transfer_requests_export_staging.*:ALL"
+    - name: export_OL_UC_staging
+      host: "%"
+      password: '{{ mysql_export_OL_UC_staging_password }}'
+      priv: "export_OL_UC_staging.*:ALL"
