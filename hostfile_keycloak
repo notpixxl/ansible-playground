@@ -7,3 +7,6 @@ svlxappvm10 ansible_ssh_host=10.99.98.160 ansible_ssh_port=22 ansible_python_int
 svlxappvm11 ansible_ssh_host=10.99.98.161 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
 [db-servers]
 svlxbddvm05 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm06 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm07 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm08 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3

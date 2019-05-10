@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ndb1" do |ndb1|
     ndb1.vm.box = "ubuntu/bionic64"
     config.ssh.dsa_authentication = false
-    config.vm.network "private_network", type: "wlp1s0"
+    config.vm.network "public_network", bridge: "wlp1s0"
     config.vm.network "forwarded_port", guest: 3306, host: 3307, id: "mysql"
   end
 
