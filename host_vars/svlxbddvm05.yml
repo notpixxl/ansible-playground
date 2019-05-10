@@ -1,15 +1,15 @@
 mysql_databases:
     - name: keycloak_test
-      collation: utf8_general_ci
-      encoding: utf8
+      collation: latin1_swedish_ci
+      encoding: latin1
       replicate: 1
     - name: transfer_requests_export_test
-      collation: utf8_general_ci
-      encoding: utf8
+      collation: latin1_swedish_ci
+      encoding: latin1
       replicate: 1
     - name: export_OL_UC_test
-      collation: utf8_general_ci
-      encoding: utf8
+      collation: latin1_swedish_ci
+      encoding: latin1
       replicate: 1
 
 mysql_users:
