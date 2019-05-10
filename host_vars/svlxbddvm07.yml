@@ -1,3 +1,4 @@
+mysql_port: "35367"
 mysql_databases:
     - name: keycloak_demo
       collation: latin1_swedish_ci
