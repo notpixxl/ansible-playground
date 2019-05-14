@@ -165,3 +165,23 @@ To change a vault key (previous key is needed)
 ```bash
 ansible-vault rekey vault.yml
 ```
+
+## Centreon Playbook
+
+* this playbook permit you to add a list of Ubuntu Linux 18.04 severs into our monitoring engine
+* you have to create a hostfile with this strucuture
+
+```yml
+[supervision]
+srv-ces ansible_ssh_host=10.99.99.240 ansible_ssh_port=22
+[newservers]
+svlxappvm08 ansible_ssh_host=10.99.98.158 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm09 ansible_ssh_host=10.99.98.159 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+```
+* the playbook will add your host with ip and add it to the Linux-servers hostgroup
+* the playbook will execute POLLERGENERATE, POLLERTEST, CFGMOVE and POLLERRESTART at the end so your probes are directly active
+* All the sources and options came from <https://documentation-fr.centreon.com/docs/centreon/en/2.7.x/api/clapi/engine_management.html> and <https://www.monitoring-fr.org/2015/05/automatisation-de-la-supervision-exemple-avec-centreon-et-ansible-2/>
+
+> Todo : 
+> * Turn this playbook in a role 
+> * Identify ditributions and installed packages on servers to add to specific hostgroup with specific servicegroup in centreon, example, webservers with apache go to Linux-Servers hostgroup and Apache-Webservers hostgroup with default probes on Linux-Servers and Apache specific probes for Apache-Webservers.

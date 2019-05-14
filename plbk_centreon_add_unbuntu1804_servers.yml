@@ -62,4 +62,7 @@
      - name: centreon linux addhostgroup
        shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a addhostgroup -v "{{ inventory_hostname }};Linux-Servers"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
-       delegate_to: srv-ces  
+       delegate_to: srv-ces
+     - name: centreon APPLYCFG
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -a APPLYCFG -v "Central"
+       delegate_to: srv-ces     
