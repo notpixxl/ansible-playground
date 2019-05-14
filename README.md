@@ -169,6 +169,7 @@ ansible-vault rekey vault.yml
 ## Centreon Playbook
 
 * this playbook permit you to add a list of Ubuntu Linux 18.04 severs into our monitoring engine
+* you have to run plbk_idea_provisionning.yml before to configure snmpd on your servers
 * you have to create a hostfile with this structure
 
 ```yml
