@@ -188,3 +188,9 @@ svlxappvm09 ansible_ssh_host=10.99.98.159 ansible_ssh_port=22 ansible_python_int
 > Todo : 
 > * Turn this playbook in a role 
 > * Identify ditributions and installed packages on servers to add to specific hostgroup with specific servicegroup in centreon, example, webservers with apache go to Linux-Servers hostgroup and Apache-Webservers hostgroup with default probes on Linux-Servers and Apache specific probes for Apache-Webservers.
+
+To Run the playbook, Vault pass is in keepass, SUDO pass is yours
+
+```bash
+ansible-playbook --check -i hostfile_keycloak_centreon_add --vault-id @prompt plbk_centreon_add_unbuntu1804_servers.yml --ask-become-pass
+```
