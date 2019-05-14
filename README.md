@@ -182,6 +182,8 @@ svlxappvm09 ansible_ssh_host=10.99.98.159 ansible_ssh_port=22 ansible_python_int
 * the playbook will execute POLLERGENERATE, POLLERTEST, CFGMOVE and POLLERRESTART at the end so your probes are directly active
 * All the sources and options came from <https://documentation-fr.centreon.com/docs/centreon/en/2.7.x/api/clapi/engine_management.html> and <https://www.monitoring-fr.org/2015/05/automatisation-de-la-supervision-exemple-avec-centreon-et-ansible-2/>
 
+> if you test CLAPI directly from the centreon server you add to execute command as sudo
+
 > Todo : 
 > * Turn this playbook in a role 
 > * Identify ditributions and installed packages on servers to add to specific hostgroup with specific servicegroup in centreon, example, webservers with apache go to Linux-Servers hostgroup and Apache-Webservers hostgroup with default probes on Linux-Servers and Apache specific probes for Apache-Webservers.
