@@ -1,63 +1,65 @@
 ---
-- hosts: veeamproxy
+- hosts: newservers
   become: true
   become_user: root
   gather_facts: yes
+  vars_files:
+    - vault.yml
 
   tasks:
      - name: centreon linux add host
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a add -v "{{ inventory_hostname }};{{ inventory_hostname }};{{ ansible_default_ipv4.address }};generic-host;central;Linux-Servers"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a add -v "{{ inventory_hostname }};{{ inventory_hostname }};{{ ansible_default_ipv4.address }};generic-host;central;Linux-Servers"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam snmp_community
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};snmp_community;public"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};snmp_community;public"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam snmp_version
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};snmp_version;2c"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};snmp_version;2c"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam check_command
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};check_command;check_host_alive"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};check_command;check_host_alive"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam check_period
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};check_period;24x7"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};check_period;24x7"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam max_check_attempts
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};max_check_attempts;2"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};max_check_attempts;2"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam check_interval
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};check_interval;15"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};check_interval;15"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam retry_check_interval
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};retry_check_interval;2"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};retry_check_interval;2"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam active_checks_enabled
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};active_checks_enabled;true"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};active_checks_enabled;true"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces  
      - name: centreon linux setparam passive_checks_enabled
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};passive_checks_enabled;true"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};passive_checks_enabled;true"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam icon_image
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};icon_image;ppm/operatingsystems-linux-snmp-linux-128.png"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};icon_image;ppm/operatingsystems-linux-snmp-linux-128.png"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam vrml_image
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};vrml_image;ppm/operatingsystems-linux-snmp-linux-128.png"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};vrml_image;ppm/operatingsystems-linux-snmp-linux-128.png"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux setparam statusmap_image
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a setparam -v "{{ inventory_hostname }};statusmap_image;ppm/operatingsystems-linux-snmp-linux-128.png"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a setparam -v "{{ inventory_hostname }};statusmap_image;ppm/operatingsystems-linux-snmp-linux-128.png"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces
      - name: centreon linux addhostgroup
-       shell: /usr/share/centreon/bin/centreon -u admin -p NsksM5rn -o HOST -a addhostgroup -v "{{ inventory_hostname }};Linux-Servers"
+       shell: /usr/share/centreon/bin/centreon -u admin -p '{{monitoring_password}}' -o HOST -a addhostgroup -v "{{ inventory_hostname }};Linux-Servers"
        when:  (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_version'] == "18.04")
        delegate_to: srv-ces  
