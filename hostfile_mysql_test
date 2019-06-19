@@ -1,2 +1,0 @@
-[db-servers]
-svlxbddvm05 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
