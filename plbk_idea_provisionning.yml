@@ -11,6 +11,10 @@
       when: "ansible_facts['os_family'] == 'Debian'"
     - role: snmpd
       when: "ansible_facts['os_family'] == 'Debian'"
+    - role: fail2ban
+      when: "ansible_facts['os_family'] == 'Debian'"
+    - role: addadminusers
+      when: "ansible_facts['os_family'] == 'Debian'"    
 
   tasks:
 

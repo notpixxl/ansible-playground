@@ -1,0 +1,9 @@
+---
+# vars file for addadminusers
+adminusers:
+  - cpiveteau
+  - mbenoit
+  - bpottier
+  - cprunier
+  - nleborgne
+  - mmainchain

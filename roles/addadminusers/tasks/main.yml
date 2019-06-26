@@ -1,0 +1,57 @@
+---
+# tasks file for addadminusers
+    - name: Install sudo
+      apt:
+        name: sudo
+        state: present
+        update_cache: yes
+
+    - name: Create users accounts
+      user:
+        name: "{{ item }}"
+        state: present
+        createhome: yes
+        append: yes
+        shell: /bin/bash
+        # this is just a default password,it's SHA512 for "changeme"
+        password: $6$Yk./2YcbJW$1tqH5tsct0HdTiYBjRO8vC5htvWOzQKdq0IplHDJJEM//wyBwGu9.DhsSwgIzBLxcJueT1EgUab3OrWHJ1Wiv0
+        update_password: on_create
+      with_items: "{{ adminusers }}"
+      when: "ansible_facts['os_family'] == 'Debian'"
+
+    - name: Create sudoer's filename
+      copy:
+        dest: /etc/sudoers.d/{{ item }}
+        content: "{{ item }} ALL=(ALL)  NOPASSWD: ALL"
+      with_items: "{{ users }}"
+
+    - name: Add .ssh directories
+      file:
+        path: /home/{{ item }}/.ssh
+        state: directory
+        mode: 0700
+      with_items: "{{ users }}"
+
+    - name: Add authorized keys
+      authorized_key:
+        user: "{{ item }}"
+        key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
+      with_items: "{{ users }}"
+
+    - name: Disallow root SSH access
+      lineinfile: 
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin no"
+        state: present
+        backup: yes
+      notify: restart ssh
+
+    - name: Disable Password Authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: "PasswordAuthentication no"
+        state: present
+        backup: yes
+      notify: restart ssh
