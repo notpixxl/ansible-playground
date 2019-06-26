@@ -1,6 +1,5 @@
 ---
 # handlers file for addadminusers
-  handlers:
     - name: restart ssh
       service:
         name=sshd

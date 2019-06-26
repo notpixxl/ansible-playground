@@ -23,20 +23,20 @@
       copy:
         dest: /etc/sudoers.d/{{ item }}
         content: "{{ item }} ALL=(ALL)  NOPASSWD: ALL"
-      with_items: "{{ users }}"
+      with_items: "{{ adminusers }}"
 
     - name: Add .ssh directories
       file:
         path: /home/{{ item }}/.ssh
         state: directory
         mode: 0700
-      with_items: "{{ users }}"
+      with_items: "{{ adminusers }}"
 
     - name: Add authorized keys
       authorized_key:
         user: "{{ item }}"
         key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
-      with_items: "{{ users }}"
+      with_items: "{{ adminusers }}"
 
     - name: Disallow root SSH access
       lineinfile: 
