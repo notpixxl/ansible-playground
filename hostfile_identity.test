@@ -1,2 +1,0 @@
-[keycloak]
-svlxappvm08 ansible_ssh_host=10.99.98.158 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
