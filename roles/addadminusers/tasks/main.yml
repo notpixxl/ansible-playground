@@ -36,6 +36,7 @@
       authorized_key:
         user: "{{ item }}"
         key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
+        exclusive: True
       with_items: "{{ adminusers }}"
 
     - name: Disallow root SSH access
