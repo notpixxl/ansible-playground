@@ -1,7 +1,0 @@
-ALTER USER 'cpiveteau'@'%' PASSWORD EXPIRE;
-ALTER USER 'mbenoit'@'%' PASSWORD EXPIRE;
-ALTER USER 'cprunier'@'%' PASSWORD EXPIRE;
-ALTER USER 'jgouvernayre'@'%' PASSWORD EXPIRE;
-ALTER USER 'bpottier'@'%' PASSWORD EXPIRE;
-ALTER USER 'mmainchain'@'%' PASSWORD EXPIRE;
-ALTER USER 'nleborgne'@'%' PASSWORD EXPIRE;
