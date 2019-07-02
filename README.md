@@ -37,7 +37,7 @@ This will create a file on your repo with all the usable facts for your Guests s
 ```
 
 ## Run a playbook
-A playbook is a set of 'plays' each play is related to a hosts group and contains a tasks list to run. It is possible to run some hooks called handlers at the end of a tasks.
+A playbook is a set of 'plays' each play is related to a hosts group and contains a task list to run. It is possible to run some hooks called handlers at the end of a task.
 
 ```bash
 ansible-playbook ./plbk_idea_provisionning.yml -i ./hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant
