@@ -5,3 +5,4 @@
     - vault.yml
   roles:
     - ns_add_server
+    - ns_add_service

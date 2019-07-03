@@ -1,0 +1,22 @@
+---
+# tasks file for ns_add_service
+# Monitor monitor-1 must have been already setup
+
+- name: Setup https service
+  netscaler_service:
+    nsip: '{{ nsip }}'
+    nitro_user: '{{ nitro_user }}'
+    nitro_pass: '{{ nitro_password }}'
+
+    state: present
+    name: '{{ inventory_hostname }}_ssl'
+    servername: '{{ inventory_hostname }}'
+    servicetype: SSL
+    port: 443
+    cip: enabled
+    cipheader: X-Forwarded_For
+    monitor_bindings: https
+    comment: '{{ webserver_hostname }}_ssl_service'
+    save_config: no
+  delegate_to: localhost
+  notify: Save configuration
