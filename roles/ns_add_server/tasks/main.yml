@@ -1,0 +1,14 @@
+---
+# tasks file for ns_add_server
+- name: Setup server
+  delegate_to: localhost
+  netscaler_server:
+      nsip: '{{ nsip }}'
+      nitro_user: '{{ nitro_user }}'
+      nitro_pass: '{{ nitro_password }}'
+
+      state: present
+
+      name: '{{ inventory_hostname }}'
+      ipaddress: '{{ inventory_ip }}'
+      comment: '{{ webserver_hostname }}'
