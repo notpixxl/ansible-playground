@@ -1,8 +1,6 @@
 ---
 - hosts: webservers
-  become: true
-  become_user: root
-  gather_facts: yes
+  gather_facts: no
   vars_files:
     - vault.yml
   roles:
