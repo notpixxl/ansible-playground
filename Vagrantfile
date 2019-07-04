@@ -14,14 +14,15 @@ Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "debian/stretch64"
     config.ssh.dsa_authentication = false
-    config.vm.network "private_network", type: "dhcp"
+    config.vm.network "public_network", bridge: "wlp1s0"
+    config.vm.network "forwarded_port", guest: 80, host: 80, id: "http"
   end
 
-  config.vm.define "web2" do |web2|
-    web2.vm.box = "debian/stretch64"
-    config.ssh.dsa_authentication = false
-    config.vm.network "private_network", type: "dhcp"
-  end
+  # config.vm.define "web2" do |web2|
+  #   web2.vm.box = "debian/stretch64"
+  #   config.ssh.dsa_authentication = false
+  #   config.vm.network "private_network", type: "dhcp"
+  # end
   
   # config.vm.define "ndb0" do |ndb0|
   #   ndb0.vm.box = "ubuntu/bionic64"
