@@ -1,8 +1,8 @@
 nginx_vhosts:
 - listen: "80" # default: "80"
   server_name: "web1.groupe-idea.com" # default: N/A
-  root: "/var/www/html/groupe-idea.com" # default: N/A
-  index: "index.html index.htm" # default: "index.html index.htm"
+  root: "/var/www/html/" # default: N/A
+  index: "index.html index.htm index.nginx-debian.html index.nginx-debian.htm" # default: "index.html index.htm"
   filename: "web1.groupe-idea.com.conf" # Can be used to set the vhost filename.
 #
 #   # Properties that are only added if defined:
@@ -13,3 +13,6 @@ nginx_vhosts:
 #   extra_parameters: "" # Can be used to add extra config blocks (multiline).
 #   template: "" # Can be used to override the `nginx_vhost_template` per host.
 #   state: "absent" # To remove the vhost configuration.
+
+ns_conf:
+  webserver_hostname: web1.groupe-idea.com

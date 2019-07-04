@@ -9,7 +9,7 @@
       state: present
       name: '{{ inventory_hostname }}'
       ipaddress: '{{ ansible_ssh_host }}'
-      comment: '{{ webserver_hostname }}'
+      comment: '{{ ns_conf.webserver_hostname }}'
       save_config: no
   delegate_to: localhost 
   notify: Save configuration
