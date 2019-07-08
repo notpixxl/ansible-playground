@@ -15,8 +15,12 @@
     port: 80
     cip: enabled
     cipheader: X-Forwarded_For
-    monitor_bindings: http
     comment: '{{ ns_conf.webserver_hostname }}_http_service'
     save_config: no
+
+    monitor_bindings:
+      - monitorname: http
+        weight: 1
+
   delegate_to: localhost
   notify: Save configuration
