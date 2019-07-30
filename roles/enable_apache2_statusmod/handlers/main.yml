@@ -1,0 +1,7 @@
+---
+# handlers file for enable_apache2_statusmod
+# handlers file for addadminusers
+    - name: restart apache2
+      service:
+        name=apache2
+        state=restarted
