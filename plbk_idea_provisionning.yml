@@ -21,20 +21,20 @@
 
     #Update && upgrade all packages
 
-    - name: Upgrade all packages to the latest version
-      apt:
-       name: "*"
-       state: latest
-       update_cache: yes
-       force_apt_get: yes
+    # - name: Upgrade all packages to the latest version
+    #   apt:
+    #    name: "*"
+    #    state: latest
+    #    update_cache: yes
+    #    force_apt_get: yes
 
-    - name: Remove useless packages from the cache
-      apt:
-       autoclean: yes
+    # - name: Remove useless packages from the cache
+    #   apt:
+    #    autoclean: yes
 
-    - name: Remove dependencies that are no longer required
-      apt:
-       autoremove: yes
+    # - name: Remove dependencies that are no longer required
+    #   apt:
+    #    autoremove: yes
 
     #Modify group_vars/idea_dependencies.yml to add packages to the provisionning 
 

@@ -1,3 +1,12 @@
 [webservers]
 apache-webserver ansible_ssh_host=10.99.99.9 ansible_ssh_port=22
 chat.idea-groupe.com ansible_ssh_host=172.17.0.25 ansible_ssh_port=22
+intranet ansible_ssh_host=10.99.99.117 ansible_ssh_port=22
+srv-ereflex ansible_ssh_host=172.17.0.22 ansible_ssh_port=22
+srv-owncloud ansible_ssh_host=172.18.0.43 ansible_ssh_port=22
+srv-prod ansible_ssh_host=10.99.99.120 ansible_ssh_port=22
+srv-supervision ansible_ssh_host=10.99.99.251 ansible_ssh_port=22 
+srv-web-demo ansible_ssh_host=172.18.0.41 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+srv-web-prod ansible_ssh_host=172.18.0.42 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+srv-web-test ansible_ssh_host=172.18.0.40 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm03 ansible_ssh_host=10.99.99.1 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3

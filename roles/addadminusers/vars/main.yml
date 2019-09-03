@@ -3,7 +3,7 @@
 adminusers:
   - cpiveteau
   - mbenoit
-  - bpottier
+  #- bpottier
   - cprunier
-  - nleborgne
-  - mmainchain
+  #- nleborgne
+  #- mmainchain

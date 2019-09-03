@@ -1,21 +1,26 @@
 ---
 # tasks file for enable_apache2_statusmod
+
 # enable status module, which is identified as status_module inside apache2
-- apache2_module:
+- name: Enable Status Module
+  apache2_module:
     state: present
     name: status
     identifier: status_module
 
 - name: Comment local line in status.conf
-    replace:
+  replace:
       path: /etc/apache2/mods-available/status.conf
+      after: '<Location /server-status>'
+      before: '</Location>'
       regexp: 'Require local'
       replace: '#Require local'
+      backup: yes
 
-- name: Ensure Monitoring Server add access to status page
+- name: Add monitor server access to status page
   lineinfile:
-    path: /etc/apache2/mods-available/status.conf
-    regexp: '^#Require ip '
-    insertafter: '^#Require ip '
-    line: Require ip 10.99.99.240/32
+      path: /etc/apache2/mods-available/status.conf
+      insertafter: '#Require ip 192.0.2.0/24'
+      line: 'Require ip 10.99.99.240/32'
+      backup: yes
   notify: restart apache2
