@@ -47,15 +47,6 @@ ansible-playbook ./plbk_idea_provisionning.yml -i ./hostfile_vagrant_playground 
 ```bash
 ssh -p 2222 username@localhost
 ```
-## Test vagrant mysql service from host
-* Append a new line on vagrant file on your sql server for forward 3306 port to host 
-```bash
-config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
-```
-* To connect to your service from your host 
-```bash
-mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
-```
 
 ## Init a new role repository
 ```bash
@@ -140,6 +131,16 @@ vagrant ssh ndb0
 sudo mysql -u root -p
 ```
 > Note: If you get an error like ERROR 1698 (28000): Access denied for user 'root'@'localhost' (using password: YES) when trying to log in from the CLI you might need to run as root or sudoer.
+
+## Test vagrant mysql service from host
+* Append a new line on vagrant file on your sql server for forward 3306 port to host 
+```bash
+config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
+```
+* To connect to your service from your host 
+```bash
+mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
+```
 
 ## Ansible Vault
 * Because Ansible tasks, handlers, and other objects are data, these can also be encrypted with vault. If you’d like to not expose what variables you are using, you can keep an individual task file entirely encrypted.
