@@ -58,8 +58,8 @@ mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
 ```
 
 ## useradd_ideaadmins Playbook
-* Modify group_vars/staff.yml ans add your new admin username
-* Add the username.key.pub to files directory
+* Modify roles/addadminusers/vars/main.yml ans add your new admin username
+* Add the roles/addadminusers/files/username.key.pub to files directory
 * Run the playbook
 
 ```bash
