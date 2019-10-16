@@ -5,3 +5,4 @@ idea_dependencies:
   - ncdu
   - open-vm-tools
   - net-tools
+  - parted

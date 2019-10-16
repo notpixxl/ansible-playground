@@ -57,7 +57,12 @@ config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
 mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
 ```
 
-## useradd_ideaadmins Playbook
+## Init a new role repository
+```bash
+ansible-galaxy init nom_du_role --init-path=./roles --offline
+```
+
+## addadminusers role
 * Modify roles/addadminusers/vars/main.yml ans add your new admin username
 * Add the roles/addadminusers/files/username.key.pub to files directory
 * Run the playbook
@@ -66,13 +71,8 @@ mysql -h 127.0.0.1 -P 3306 -u mysql_user -p
 ansible-playbook plbk_useradd_ideaadmins_with_ssh.yml -i hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant
 ```
 
-## Init a new role repository
-```bash
-ansible-galaxy init nom_du_role --init-path=./roles --offline
-```
-
 ## Add package to IDEA provisionning
-* The playbook idea_provisionning.yml is base on a list of packages installed with no configuration
+* The playbook plbk_idea_provisionning.yml is base on a list of packages installed with no configuration
 * To add a new package to the list please add it to the list in group_vars/idea_dependencies.yml
 * Please be warned that this list is only for package that don't need a custom conf, if you need to configure a package please make a role instead.
 
