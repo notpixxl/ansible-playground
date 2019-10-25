@@ -1,0 +1,44 @@
+[webservers]
+svlxwebvm01 ansible_ssh_host=10.99.98.166 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm02 ansible_ssh_host=10.99.98.167 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm03 ansible_ssh_host=10.99.98.168 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm04 ansible_ssh_host=10.99.98.169 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm05 ansible_ssh_host=10.99.98.170 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm06 ansible_ssh_host=10.99.98.171 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm07 ansible_ssh_host=10.99.98.172 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm08 ansible_ssh_host=10.99.98.173 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+apache-webserver ansible_ssh_host=10.99.99.9 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python2.7
+chat.idea-groupe.com ansible_ssh_host=172.17.0.25 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python2.7
+intranet ansible_ssh_host=10.99.99.117 ansible_ssh_port=22
+srv-ereflex ansible_ssh_host=172.17.0.22 ansible_ssh_port=22 
+srv-owncloud ansible_ssh_host=172.18.0.43 ansible_ssh_port=22
+srv-prod ansible_ssh_host=10.99.99.120 ansible_ssh_port=22
+srv-web-demo ansible_ssh_host=172.18.0.41 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+srv-web-prod ansible_ssh_host=172.18.0.42 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+srv-web-test ansible_ssh_host=172.18.0.40 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+
+[dbservers]
+svlxbddvm01 ansible_ssh_host=10.99.99.61 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm02 ansible_ssh_host=10.99.99.62 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm03 ansible_ssh_host=10.99.99.63 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm04 ansible_ssh_host=10.99.99.64 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm05 ansible_ssh_host=10.99.98.162 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm06 ansible_ssh_host=10.99.98.163 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm07 ansible_ssh_host=10.99.98.164 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxbddvm08 ansible_ssh_host=10.99.98.165 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+
+[appservers]
+svlxappvm01 ansible_ssh_host=10.99.99.2 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm03 ansible_ssh_host=10.99.99.1 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm04 ansible_ssh_host=172.18.0.44 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm05 ansible_ssh_host=10.38.0.215 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm06 ansible_ssh_host=172.18.0.39 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm07 ansible_ssh_host=10.99.99.3 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm08 ansible_ssh_host=10.99.98.158 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm09 ansible_ssh_host=10.99.98.159 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm10 ansible_ssh_host=10.99.98.160 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm11 ansible_ssh_host=10.99.98.161 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm12 ansible_ssh_host=10.99.99.240 ansible_ssh_port=22
+svlxappvm13 ansible_ssh_host=10.99.98.150 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+san-intanet ansible_ssh_host=10.99.99.118 ansible_ssh_port=22 
+srv-supervision ansible_ssh_host=10.99.99.251 ansible_ssh_port=22
