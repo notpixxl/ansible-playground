@@ -1,10 +1,18 @@
 ---
 # tasks file for addadminusers
-    - name: Install sudo
+    - name: Install sudo on Debian
       apt:
         name: sudo
         state: present
         update_cache: yes
+      when: "ansible_facts['os_family'] == 'Debian'"
+
+    - name: Install sudo on CentOS
+      yum:
+        name: sudo
+        state: present
+        update_cache: yes
+      when: "ansible_facts['os_family'] == 'RedHat'"    
 
     - name: Create users accounts
       user:
@@ -17,7 +25,6 @@
         password: $6$Yk./2YcbJW$1tqH5tsct0HdTiYBjRO8vC5htvWOzQKdq0IplHDJJEM//wyBwGu9.DhsSwgIzBLxcJueT1EgUab3OrWHJ1Wiv0
         update_password: on_create
       with_items: "{{ adminusers }}"
-      when: "ansible_facts['os_family'] == 'Debian'"
 
     - name: Create sudoer's filename
       copy:

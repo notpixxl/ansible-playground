@@ -6,4 +6,3 @@
 
   roles:
     - role: addadminusers
-      when: "ansible_facts['os_family'] == 'Debian'"
