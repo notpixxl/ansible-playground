@@ -1,0 +1,2 @@
+dependencies:
+  - { role: 'git+git@github.com:notpixxl/addadminusers.git,v1.0.0'}
