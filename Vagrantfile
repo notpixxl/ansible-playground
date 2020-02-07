@@ -6,10 +6,6 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
-
   # Multi-Machine config
   # config.vm.define "web1" do |web1|
   #   web1.vm.box = "debian/stretch64"
@@ -28,7 +24,7 @@ Vagrant.configure("2") do |config|
     ndb0.vm.box = "generic/debian10"
     config.ssh.dsa_authentication = false
     config.vm.network "public_network", bridge: "wlp1s0"
-    # config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
+    config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
   end
 
   # config.vm.define "ndb1" do |ndb1|
@@ -51,10 +47,13 @@ Vagrant.configure("2") do |config|
   #   config.vm.network "public_network", bridge: "wlp1s0"
   #   config.vm.network "forwarded_port", guest: 3306, host: 3309, id: "mysql"
   # end
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  # config.vm.box = "base"
+  # config.vm.box = "generic/debian10"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -109,5 +108,4 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  #config.ssh.dsa_authentication = false
 end
