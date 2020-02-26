@@ -1,2 +1,2 @@
 [webservers]
-svlxappvm15 ansible_ssh_host=10.29.3.214 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxwebvm09 ansible_ssh_host=10.29.3.215 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
