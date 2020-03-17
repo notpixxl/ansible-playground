@@ -40,5 +40,6 @@ svlxappvm10 ansible_ssh_host=10.99.98.160 ansible_ssh_port=22 ansible_python_int
 svlxappvm11 ansible_ssh_host=10.99.98.161 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
 svlxappvm12 ansible_ssh_host=10.99.99.240 ansible_ssh_port=22
 svlxappvm13 ansible_ssh_host=10.99.98.150 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
+svlxappvm17 ansible_ssh_host=10.99.99.15 ansible_ssh_port=22 ansible_python_interpreter=/usr/bin/python3
 san-intanet ansible_ssh_host=10.99.99.118 ansible_ssh_port=22 
 srv-supervision ansible_ssh_host=10.99.99.251 ansible_ssh_port=22
