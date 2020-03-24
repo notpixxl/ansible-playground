@@ -5,6 +5,14 @@
 * Have ansible installed on your host machine
 * You should add your public ssh key to the authorized_key file before doing anything.
 
+## Vagrant Test Box
+If you want to test your playbook on Vagrant test box you first need to copy your ssh key on vagrant user 
+
+```bash
+ssh-copy-id vagrant@127.0.0.1 -p 2222
+```
+'vagrant' is the defaut password for all the boxes
+
 ## Ping vagrant with ansible
 * default is referencing the target hosts. Defined in the inventory file.
 * -i point to the inventory file
