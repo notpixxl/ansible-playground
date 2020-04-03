@@ -2,4 +2,4 @@
   become: true
   become_user: root
   roles:
-     - { role: notpixxl.ansible-ocsinventory-agent, ocsinventory_launch_options: "--server=http://myocsserver.domain.com/ocsinventory" }
+     - { role: ansible-ocsinventory-agent, ocsinventory_launch_options: "--server=https://supervision.idea-groupe.com/ocsinventory" }
