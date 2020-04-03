@@ -6,7 +6,6 @@
 
   roles:
     - role: addadminusers
-      when: "ansible_facts['os_family'] == 'Debian'"  
     - role: htop
       when: "ansible_facts['os_family'] == 'Debian'"
     - role: glances
@@ -19,23 +18,6 @@
 
   tasks:
 
-    #Update && upgrade all packages
-
-    # - name: Upgrade all packages to the latest version
-    #   apt:
-    #    name: "*"
-    #    state: latest
-    #    update_cache: yes
-    #    force_apt_get: yes
-
-    # - name: Remove useless packages from the cache
-    #   apt:
-    #    autoclean: yes
-
-    # - name: Remove dependencies that are no longer required
-    #   apt:
-    #    autoremove: yes
-
     #Modify group_vars/idea_dependencies.yml to add packages to the provisionning 
 
     - name: Include vars of idea_dependencies.yml into the 'idea_dependencies' variable
@@ -44,9 +26,17 @@
 
     #This section install IDEA Provisionning dependancies that don't required custom config
 
-    - name: install "{{ idea_dependencies }}"
+    - name: install "{{ idea_dependencies }}" on Debian Linux OS Family
       apt:
         name: "{{ idea_dependencies }}"
         state: "{{ apt_install_state | default('latest') }}"
         update_cache: true
-        cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"  
+        cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+      when: "ansible_facts['os_family'] == 'Debian'"
+
+    - name: install "{{ idea_dependencies }}" on RedHatLinux OS Family
+      yum:
+        name: "{{ idea_dependencies }}"
+        state: "latest"
+        update_cache: yes
+      when: "ansible_facts['os_family'] == 'RedHat'"      
