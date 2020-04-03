@@ -61,6 +61,11 @@ ssh -p 2222 username@localhost
 ansible-galaxy init nom_du_role --init-path=./roles --offline
 ```
 
+## Install a role from Github
+```bash
+ansible-galaxy install git+git@github.com:notpixxl/ansible-ocsinventory-agent.git
+```
+
 ## addadminusers role
 * Modify roles/addadminusers/vars/main.yml ans add your new admin username
 * Add the roles/addadminusers/files/username.key.pub to files directory
