@@ -13,10 +13,19 @@ Vagrant.configure("2") do |config|
    end
 
    config.vm.define "web2" do |web2|
-     web2.vm.box = "centos/7"
-     config.ssh.dsa_authentication = false
-     config.vm.network "private_network", type: "dhcp"
-   end
+    web2.vm.box = "debian/buster64"
+    config.ssh.dsa_authentication = false
+  end
+
+  config.vm.define "web3" do |web3|
+    web3.vm.box = "ubuntu/trusty64"
+    config.ssh.dsa_authentication = false
+  end
+
+  config.vm.define "web4" do |web4|
+    web4.vm.box = "centos/7"
+    config.ssh.dsa_authentication = false
+  end
   
   #config.vm.define "ndb0" do |ndb0|
     #ndb0.vm.box = "generic/debian10"
