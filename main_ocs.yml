@@ -2,4 +2,4 @@
   become: true
   become_user: root
   roles:
-     - { role: ansible-ocsinventory-agent, ocsinventory_launch_options: "--server=http://ocsinventory-ng.idea.lo/ocsinventory", ocsinventory_cronjob_minute: "1" }
+     - { role: ansible-ocsinventory-agent, ocsinventory_launch_options: "--server=http://ocsinventory-ng.idea.lo/ocsinventory",ocsinventory_cronjob_minute: "*",ocsinventory_cronjob_hour: "*" }
