@@ -8,24 +8,24 @@
 Vagrant.configure("2") do |config|
   # Multi-Machine config
    config.vm.define "web1" do |web1|
-     web1.vm.box = "debian/stretch64"
+     web1.vm.box = "debian/buster64"
      config.ssh.dsa_authentication = false
    end
 
    config.vm.define "web2" do |web2|
-    web2.vm.box = "debian/buster64"
+    web2.vm.box = "ubuntu/xenial64"
     config.ssh.dsa_authentication = false
   end
 
-  config.vm.define "web3" do |web3|
-    web3.vm.box = "ubuntu/trusty64"
-    config.ssh.dsa_authentication = false
-  end
+  # config.vm.define "web3" do |web3|
+  #   web3.vm.box = "ubuntu/trusty64"
+  #   config.ssh.dsa_authentication = false
+  # end
 
-  config.vm.define "web4" do |web4|
-    web4.vm.box = "centos/7"
-    config.ssh.dsa_authentication = false
-  end
+  # config.vm.define "web4" do |web4|
+  #   web4.vm.box = "centos/7"
+  #   config.ssh.dsa_authentication = false
+  # end
   
   #config.vm.define "ndb0" do |ndb0|
     #ndb0.vm.box = "generic/debian10"
