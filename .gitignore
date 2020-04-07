@@ -3,3 +3,4 @@ ubuntu-bionic-18.04-cloudimg-console.log
 roles/addadminusers/
 roles/ansible-ocsinventory-agent/
 stretch.vmdk
+ubuntu-xenial-16.04-cloudimg-console.log
