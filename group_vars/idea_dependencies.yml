@@ -6,4 +6,3 @@ idea_dependencies:
   - open-vm-tools
   - net-tools
   - parted
-  - ocsinventory-agent
