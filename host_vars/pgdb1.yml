@@ -1,14 +1,35 @@
+---
 #groups creation vars
+groups_to_create:
 - name: operations
 - name: developers
 - name: partners
 #users creation vars
+users:
 - username: cpiveteau
   name: Christophe Piveteau sysadmin
-  password: $6$vvCIBERKWGG9DzFB$bfEtfIu8djh/izIepgnsKsRz.zRRXYu7Av/Dc6a.UK.wRILzeTDS/efj42dVjtlWyO6isAipPNE2MM5s/rEEd.
+  password: "{{ ansible_default_pass }}"
   update_password: on_create
   group: operations
   groups: [sudo]
   ssh_key:
     - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCR4jmCjecjibQy0yRr+4hzqHoOaYeqHF42IAlKacxcFQm1E8LpO5ExAMehz8Vq0M8asu3dCC/g4DlyrxjCBNIrJPTo9IBEbl8Uzq+fZxQTG++J/8bMa164utmlsnpsrSaT+KoDhrHGSqHNz0gmCSvXmNVKJV2CTH1J/uTa0Spu1FH43i1KhGdNmfEx5tMv+MiqRD275lBcDcFNuDucdHPFF2j1WC/LGlLfhNjtWM0oQA8bhiY1EqdGp70d21isb/u6hZX37+SQ2wMCCTs1Dw7LY+CWzAjWFWaJhICfA6wzB10iHTU1MLsHyTH3PRJW0UJk32m4W8Auw3lCBExZkb/ cpiveteau@idea@NBIDEA240"
-  shell: /bin/bash   
+  shell: /bin/bash
+- username: mbenoit
+  name: Mathieu Benoit sysadmin
+  password: "{{ ansible_default_pass }}"
+  update_password: on_create
+  group: operations
+  groups: [sudo]
+  ssh_key:
+    - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCR4jmCjecjibQy0yRr+4hzqHoOaYeqHF42IAlKacxcFQm1E8LpO5ExAMehz8Vq0M8asu3dCC/g4DlyrxjCBNIrJPTo9IBEbl8Uzq+fZxQTG++J/8bMa164utmlsnpsrSaT+KoDhrHGSqHNz0gmCSvXmNVKJV2CTH1J/uTa0Spu1FH43i1KhGdNmfEx5tMv+MiqRD275lBcDcFNuDucdHPFF2j1WC/LGlLfhNjtWM0oQA8bhiY1EqdGp70d21isb/u6hZX37+SQ2wMCCTs1Dw7LY+CWzAjWFWaJhICfA6wzB10iHTU1MLsHyTH3PRJW0UJk32m4W8Auw3lCBExZkb/ cpiveteau@idea@NBIDEA240"
+  shell: /bin/bash
+- username: cpiveteau
+  name: Clement Prunier sysadmin
+  password: "{{ ansible_default_pass }}"
+  update_password: on_create
+  group: operations
+  groups: [sudo]
+  ssh_key:
+    - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCR4jmCjecjibQy0yRr+4hzqHoOaYeqHF42IAlKacxcFQm1E8LpO5ExAMehz8Vq0M8asu3dCC/g4DlyrxjCBNIrJPTo9IBEbl8Uzq+fZxQTG++J/8bMa164utmlsnpsrSaT+KoDhrHGSqHNz0gmCSvXmNVKJV2CTH1J/uTa0Spu1FH43i1KhGdNmfEx5tMv+MiqRD275lBcDcFNuDucdHPFF2j1WC/LGlLfhNjtWM0oQA8bhiY1EqdGp70d21isb/u6hZX37+SQ2wMCCTs1Dw7LY+CWzAjWFWaJhICfA6wzB10iHTU1MLsHyTH3PRJW0UJk32m4W8Auw3lCBExZkb/ cpiveteau@idea@NBIDEA240"
+  shell: /bin/bash       
