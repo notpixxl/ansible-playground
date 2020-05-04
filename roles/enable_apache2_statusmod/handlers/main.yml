@@ -1,6 +1,0 @@
----
-# handlers file for enable_apache2_statusmod
-    - name: restart apache2
-      service:
-        name=apache2
-        state=restarted

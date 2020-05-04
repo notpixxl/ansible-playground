@@ -1,7 +1,0 @@
----
-# tasks file for htop
-- name: Install htop
-  apt:
-    name: htop
-    state: present
-    update_cache: true

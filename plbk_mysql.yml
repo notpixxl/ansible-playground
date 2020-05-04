@@ -1,9 +1,0 @@
----
-- hosts: dbservers
-  become: yes
-  become_user: root
-  gather_facts: yes
-  vars_files:
-    - vault.yml 
-  roles:
-    - mysql

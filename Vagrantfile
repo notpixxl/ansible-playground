@@ -7,15 +7,15 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   # Multi-Machine config
-   config.vm.define "web1" do |web1|
-     web1.vm.box = "debian/buster64"
+   config.vm.define "pgdb1" do |pgdb1|
+     pgdb1.vm.box = "generic/debian9"
      config.ssh.dsa_authentication = false
    end
 
-   config.vm.define "web2" do |web2|
-    web2.vm.box = "ubuntu/xenial64"
-    config.ssh.dsa_authentication = false
-  end
+  #  config.vm.define "web2" do |web2|
+  #   web2.vm.box = "ubuntu/xenial64"
+  #   config.ssh.dsa_authentication = false
+  # end
 
   # config.vm.define "web3" do |web3|
   #   web3.vm.box = "ubuntu/trusty64"
