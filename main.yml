@@ -4,4 +4,5 @@
   vars_files:
     - vault.yml
   roles:
-    - singleplatform-eng.users  
+    - singleplatform-eng.users
+    - arillso.sudoers 
