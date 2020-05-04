@@ -99,3 +99,31 @@ To change a vault key (previous key is needed)
 ```bash
 ansible-vault rekey vault.yml
 ```
+
+## Generate a Hashed password
+
+Ansible ad-hoc command is the easiest option:
+
+```bash
+ansible all -i localhost, -m debug -a "msg={{ 'mypassword' | password_hash('sha512', 'mysecretsalt') }}"
+```
+
+The mkpasswd utility that is available on most Linux systems is also a great option:
+
+```bash
+mkpasswd --method=sha-512
+```
+
+If this utility is not installed on your system (e.g. you are using macOS) then you can still easily generate these passwords using Python. First, ensure that the Passlib password hashing library is installed:
+
+```bash
+pip install passlib
+```
+
+Once the library is ready, SHA512 password values can then be generated as follows:
+
+```bash
+python -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.using(rounds=5000).hash(getpass.getpass()))"
+```
+
+Use the integrated Hashing filters to generate a hashed version of a password. You shouldn’t put plaintext passwords in your playbook or host_vars; instead, use Using Vault in playbooks to encrypt sensitive data.

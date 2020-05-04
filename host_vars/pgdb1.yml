@@ -5,7 +5,7 @@
 #users creation vars
 - username: cpiveteau
   name: Christophe Piveteau sysadmin
-  password: "{{ ansible_default_pass }}"
+  password: $6$vvCIBERKWGG9DzFB$bfEtfIu8djh/izIepgnsKsRz.zRRXYu7Av/Dc6a.UK.wRILzeTDS/efj42dVjtlWyO6isAipPNE2MM5s/rEEd.
   update_password: on_create
   group: operations
   groups: [sudo]
