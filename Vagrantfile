@@ -1,116 +1,59 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+Vagrant.configure(2) do |config|
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
-Vagrant.configure("2") do |config|
-  # Multi-Machine config
-  #  config.vm.define "pgdb1" do |pgdb1|
-  #    pgdb1.vm.box = "generic/debian9"
-  #    config.ssh.dsa_authentication = false
-  #  end
+	# Set some variables
+  etcHosts=""
+  common = <<-SHELL
+  sudo apt update -qq 2>&1 >/dev/null
+  sudo apt install -y -qq git vim tree net-tools telnet 2>&1 >/dev/null
+  #sudo apt install -y -qq git vim tree net-tools telnet git python3-pip sshpass nfs-common 2>&1 >/dev/null
+  #curl -fsSL https://get.docker.com -o get-docker.sh 2>&1
+  #sudo sh get-docker.sh 2>&1 >/dev/null
+  #sudo usermod -aG docker vagrant
+  #sudo service docker start
+  sudo echo "autocmd filetype yaml setlocal ai ts=2 sw=2 et" > /home/vagrant/.vimrc
+  sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config
+  sudo systemctl restart sshd
+  SHELL
 
-  config.vm.define "node1" do |node1|
-    node1.vm.box = "ubuntu/xenial64"
-  end
+	# set vagrant image
+	config.vm.box = "ubuntu/focal64"
+	config.vm.box_url = "ubuntu/focal64"
 
-  config.vm.define "node2" do |node2|
-    node2.vm.box = "ubuntu/trusty64"
-  end
+	# set servers list and their parameters
+	NODES = [
+  	{ :hostname => "node1", :ip => "192.168.14.10", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node2", :ip => "192.168.14.11", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node3", :ip => "192.168.14.12", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node4", :ip => "192.168.14.13", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node5", :ip => "192.168.14.14", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node6", :ip => "192.168.14.15", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node7", :ip => "192.168.14.16", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node9", :ip => "192.168.14.18", :cpus => 1, :mem => 512 },
+  	# { :hostname => "node10", :ip => "192.168.14.19", :cpus => 1, :mem => 512 }
+	]
 
-  # config.vm.define "web4" do |web4|
-  #   web4.vm.box = "centos/7"
-  #   config.ssh.dsa_authentication = false
-  # end
-  
-  #config.vm.define "ndb0" do |ndb0|
-    #ndb0.vm.box = "generic/debian10"
-    #config.ssh.dsa_authentication = false
-    #config.vm.network "public_network", bridge: "wlp1s0"
-    #config.vm.network "forwarded_port", guest: 3306, host: 3306, id: "mysql"
-  #end
+	# define /etc/hosts for all servers
+  NODES.each do |node|
+   	etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + "' >> /etc/hosts" + "\n"
+  end #end NODES
 
-  # config.vm.define "ndb1" do |ndb1|
-  #   ndb1.vm.box = "ubuntu/bionic64"
-  #   config.ssh.dsa_authentication = false
-  #   config.vm.network "public_network", bridge: "wlp1s0"
-  #   config.vm.network "forwarded_port", guest: 3306, host: 3307, id: "mysql"
-  # end
+	# run installation
+  NODES.each do |node|
+    config.vm.define node[:hostname] do |cfg|
+			cfg.vm.hostname = node[:hostname]
+      cfg.vm.network "private_network", ip: node[:ip]
+      cfg.vm.provider "virtualbox" do |v|
+				v.customize [ "modifyvm", :id, "--cpus", node[:cpus] ]
+        v.customize [ "modifyvm", :id, "--memory", node[:mem] ]
+        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+        v.customize ["modifyvm", :id, "--name", node[:hostname] ]
+      end #end provider
+			
+			#for all
+      cfg.vm.provision :shell, :inline => etcHosts
+			cfg.vm.provision :shell, :inline => common
 
-  # config.vm.define "ndb2" do |ndb2|
-  #   ndb2.vm.box = "ubuntu/bionic64"
-  #   config.ssh.dsa_authentication = false
-  #   config.vm.network "public_network", bridge: "wlp1s0"
-  #   config.vm.network "forwarded_port", guest: 3306, host: 3308, id: "mysql"
-  # end
-
-  # config.vm.define "ndb3" do |ndb3|
-  #   ndb3.vm.box = "ubuntu/bionic64"
-  #   config.ssh.dsa_authentication = false
-  #   config.vm.network "public_network", bridge: "wlp1s0"
-  #   config.vm.network "forwarded_port", guest: 3306, host: 3309, id: "mysql"
-  # end
-  # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
-
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://vagrantcloud.com/search.
-  # config.vm.box = "generic/debian10"
-
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # NOTE: This will enable public access to the opened port
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine and only allow access
-  # via 127.0.0.1 to disable public access
-  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network "public_network"
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
-end
+    end # end config
+  end # end nodes
+end 
