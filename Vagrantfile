@@ -23,13 +23,13 @@ Vagrant.configure(2) do |config|
 	NODES = [
   	{ :hostname => "node1", :ip => "192.168.14.10", :cpus => 1, :mem => 512 },
   	{ :hostname => "node2", :ip => "192.168.14.11", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node3", :ip => "192.168.14.12", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node4", :ip => "192.168.14.13", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node5", :ip => "192.168.14.14", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node6", :ip => "192.168.14.15", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node7", :ip => "192.168.14.16", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node9", :ip => "192.168.14.18", :cpus => 1, :mem => 512 },
-  	# { :hostname => "node10", :ip => "192.168.14.19", :cpus => 1, :mem => 512 }
+  	{ :hostname => "node3", :ip => "192.168.14.12", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node4", :ip => "192.168.14.13", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node5", :ip => "192.168.14.14", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node6", :ip => "192.168.14.15", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node7", :ip => "192.168.14.16", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node9", :ip => "192.168.14.18", :cpus => 1, :mem => 512 },
+  	{ :hostname => "node10", :ip => "192.168.14.19", :cpus => 1, :mem => 512 }
 	]
 
 	# define /etc/hosts for all servers
