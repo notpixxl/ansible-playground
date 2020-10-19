@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
 
 	# set vagrant image
 	config.vm.box = "ubuntu/focal64"
-	config.vm.box_url = "ubuntu/focal64"
+  config.vm.box_url = "ubuntu/focal64"
 
 	# set servers list and their parameters
 	NODES = [
@@ -50,7 +50,8 @@ Vagrant.configure(2) do |config|
         v.customize ["modifyvm", :id, "--name", node[:hostname] ]
       end #end provider
 			
-			#for all
+      #for all
+      cfg.vm.boot_timeout = 600
       cfg.vm.provision :shell, :inline => etcHosts
 			cfg.vm.provision :shell, :inline => common
 
