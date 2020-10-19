@@ -2,3 +2,4 @@
 *.log
 stretch.vmdk
 roles/
+ansible_dir/
