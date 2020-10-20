@@ -1,0 +1,11 @@
+- name: playbook with
+  hosts: all
+  become: yes
+  tasks:
+  - name: boucle création de repertoire
+    file:
+      path: "/tmp/pixxl2/{{ item }}"
+      state: directory
+      recurse: yes
+    with_items:
+    - "{{ groups['all'] }}"
