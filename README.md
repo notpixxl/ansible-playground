@@ -1,33 +1,38 @@
 # Ansible playground
 
-## Requirements
+## Vagrant
 
-* Have Vagrant/Virtual box installed on your host machine
-* Have ansible installed on your host machine
-* You should add your public ssh key to the authorized_key file before doing anything.
+This repo is a playground, it is create for testing purpose only. You can find a Vagrantfile that will allow you to deploy X nodes.
+The nodes knows each other, so you can install Ansible on your first node to make it your controller and use the other to test your playbooks.
 
-## Vagrant Test Box
-
-If you want to test your playbook on Vagrant test box you first need to copy your ssh key on vagrant user
+Be aware that you have to create a ssh key on your controller and copy your pub key on other nodes
 
 ```bash
-ssh-copy-id vagrant@127.0.0.1 -p 2222
+ssh-keygen -t ecdsa -b 521
+ssh-add -l #use this to verify if ssh_agent is ready
+eval `ssh-agent`#if ssh_agent isn't started
+ssh-add
 ```
 
-'vagrant' is the defaut password for all the boxes
+now you can ssh-copy-id on your X nodes.
 
-## Ping vagrant with ansible
+## Docker
 
-* default is referencing the target hosts. Defined in the inventory file.
-* -i point to the inventory file
-* --private-key points to vagrant specific private key
-* -u specify user for ssh
-* -m module to execute
-* ping module is not a classic ping. It performs a ping via ssh
+If you have docker on your env you can use the deploy.sh script what it will do ? 
+Create "fake" virtual machines with containers, sshd, systemd and python3 are installed on the containers and you can now test your playbook on it.
 
-```bash
-ansible all -i ./hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant -m ping -vvv
-```
+option for the script are :
+
+* --create : launch x containers on linux
+* --createwsl : launch x containers on wsl
+* --drop : remove previously created containers
+* --infos : display containers info on linux
+* --infoswsl : display containers info on wsl
+* --start : boot your containers
+* --ansible : create a testing ansible directory
+* --ansiblewsl : create a testing ansible directory wsl compatible.
+
+# Cheat Sheet
 
 ## Extract Ansible Facts from an host
 
@@ -50,21 +55,13 @@ This will create a file on your repo with all the usable facts for your Guests s
         "ansible_distribution_version": "18.04",
 ```
 
-## Run a playbook
-
-A playbook is a set of 'plays' each play is related to a hosts group and contains a task list to run. It is possible to run some hooks called handlers at the end of a task.
-
-```bash
-ansible-playbook ./plbk_idea_provisionning.yml -i ./hostfile_vagrant_playground --private-key=~/.vagrant.d/insecure_private_key -u vagrant
-```
-
 ## Test Vagrant SSH connection with another user
 
 ```bash
 ssh -p 2222 username@localhost
 ```
 
-## Init a new role repository
+## Init a new role 
 
 ```bash
 ansible-galaxy init nom_du_role --init-path=./roles --offline

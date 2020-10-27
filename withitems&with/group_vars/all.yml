@@ -1,5 +1,0 @@
-mondictionnaire:
-    - { dir: "pixxl1", fichier: "titi.txt" }
-    - { dir: "pixxl1", fichier: "toto.txt" }
-    - { dir: "pixxl2", fichier: "titi.txt" }
-    - { dir: "pixxl3", fichier: "titi.txt" }
