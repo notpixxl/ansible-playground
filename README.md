@@ -32,6 +32,9 @@ option for the script are :
 * --ansible : create a testing ansible directory
 * --ansiblewsl : create a testing ansible directory wsl compatible.
 
+```./deploy.sh --create 5```
+Create 5 debian containers, create your user, make 'password' your default pass, copy your id_rsa.pub onto authorized_keys, add you to passwordless sudoers.
+
 # Cheat Sheet
 
 ## Extract Ansible Facts from an host
