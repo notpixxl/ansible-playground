@@ -116,22 +116,6 @@ createAnsible(){
 	echo ""
 }
 
-createAnsible(){
-	echo ""
-  	ANSIBLE_DIR="ansible_dir"
-  	mkdir -p $ANSIBLE_DIR
-  	echo "all:" > $ANSIBLE_DIR/00_inventory.yml
-	echo "  vars:" >> $ANSIBLE_DIR/00_inventory.yml
-    echo "    ansible_python_interpreter: /usr/bin/python3" >> $ANSIBLE_DIR/00_inventory.yml
-  echo "  hosts:" >> $ANSIBLE_DIR/00_inventory.yml
-  for conteneur in $(docker ps -a | grep $USER-debian | awk '{print $1}');do      
-    docker inspect -f '    {{.NetworkSettings.IPAddress }}:' $conteneur >> $ANSIBLE_DIR/00_inventory.yml
-  done
-  mkdir -p $ANSIBLE_DIR/host_vars
-  mkdir -p $ANSIBLE_DIR/group_vars
-	echo ""
-}
-
 createwslAnsible(){
 	echo ""
   	ANSIBLE_DIR="ansible_wsl_dir"
