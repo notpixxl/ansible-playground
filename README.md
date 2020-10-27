@@ -2,7 +2,7 @@
 
 ## Vagrant
 
-This repo is a playground, it is create for testing purpose only. You can find a Vagrantfile that will allow you to deploy X nodes.
+This repo is a playground for testing purpose only. You can find a Vagrantfile that will allow you to deploy X nodes.
 The nodes knows each other, so you can install Ansible on your first node to make it your controller and use the other to test your playbooks.
 
 Be aware that you have to create a ssh key on your controller and copy your pub key on other nodes
@@ -18,8 +18,8 @@ now you can ssh-copy-id on your X nodes.
 
 ## Docker
 
-If you have docker on your env you can use the deploy.sh script what it will do ? 
-Create "fake" virtual machines with containers, sshd, systemd and python3 are installed on the containers and you can now test your playbook on it.
+If you have docker on your env you can use the deploy.sh script, what it will do ? 
+Create "fake" virtual machines with containers, sshd, systemd and python3 are installed and you can now test your playbook.
 
 option for the script are :
 
