@@ -3,3 +3,4 @@
 stretch.vmdk
 roles/
 ansible_dir/
+ansible_wsl_dir/
