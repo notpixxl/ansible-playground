@@ -113,7 +113,7 @@ createAnsible(){
   done
   mkdir -p $ANSIBLE_DIR/host_vars
   mkdir -p $ANSIBLE_DIR/group_vars
-	echo ""
+	echo "Ansible directory is created. Enjoy !"
 }
 
 createwslAnsible(){
@@ -131,7 +131,7 @@ createwslAnsible(){
   done
   mkdir -p $ANSIBLE_DIR/host_vars
   mkdir -p $ANSIBLE_DIR/group_vars
-	echo ""
+	echo "Ansible WSL directory is created. Enjoy !"
 }
 
 infosNodes(){
