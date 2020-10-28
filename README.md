@@ -18,7 +18,7 @@ now you can ssh-copy-id on your X nodes.
 
 ## Docker
 
-If you have docker on your env you can use the deploy.sh script, what it will do ? 
+If you have docker on your env you can use the deploy.sh script, what it will do ?
 Create "fake" virtual machines with containers, sshd, systemd and python3 are installed and you can now test your playbook.
 
 option for the script are :
@@ -37,7 +37,7 @@ Create 5 debian containers, create your user, make 'password' your default pass,
 
 > :warning: Docker containers can have problem to start on WSL, it's because directory /sys/fs/cgroup/systemd do not exist on wsl make sure to create it with mkdir /sys/fs/cgroup/systemd before starting your deploy.sh
 
-# Cheat Sheet
+## Cheat Sheet
 
 ## Extract Ansible Facts from an host
 
@@ -66,7 +66,7 @@ This will create a file on your repo with all the usable facts for your Guests s
 ssh -p 2222 username@localhost
 ```
 
-## Init a new role 
+## Init a new role
 
 ```bash
 ansible-galaxy init nom_du_role --init-path=./roles --offline
