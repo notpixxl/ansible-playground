@@ -35,9 +35,15 @@ option for the script are :
 ```./deploy.sh --create 5```
 Create 5 debian containers, create your user, make 'password' your default pass, copy your id_rsa.pub onto authorized_keys, add you to passwordless sudoers.
 
-!! [WARNING]
-!! Docker containers can have problem to start on WSL, it's because directory /sys/fs/cgroup/systemd do not exist on wsl
-!! make sure to create it with mkdir /sys/fs/cgroup/systemd before starting your deploy.sh
+<div class="panel panel-warning">
+**Warning**
+{: .panel-heading}
+<div class="panel-body">
+
+Docker containers can have problem to start on WSL, it's because directory /sys/fs/cgroup/systemd do not exist on wsl make sure to create it with mkdir /sys/fs/cgroup/systemd before starting your deploy.sh
+
+</div>
+</div>
 
 # Cheat Sheet
 
