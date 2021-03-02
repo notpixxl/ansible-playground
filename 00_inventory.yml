@@ -1,0 +1,13 @@
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  hosts:
+
+        bpgo-voile-preprod-front-1:
+        bpgo-voile-preprod-front-2:
+        bpgo-voile-preprod-rds:          
+        bpgo-voile-prod-front-1:
+        bpgo-voile-prod-front-2:
+        bpgo-voile-prod-rds:
+        bpgo-mautic-prod-front-1:
+        bpgo-mautic-prod-rds-1:
